@@ -3,7 +3,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Lightbulb, Target, CheckCircle } from 'lucide-react';
+import { Target, CheckCircle } from 'lucide-react';
 
 const MotivationHub = () => {
     const weeklyGoals = [
@@ -20,20 +20,8 @@ const MotivationHub = () => {
     ];
 
     return (
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="lg:col-span-3 bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg">
-                <CardHeader>
-                    <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Citation du jour</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <blockquote className="text-xl italic">
-                        "La meilleure façon de prédire l'avenir, c'est de l'inventer."
-                    </blockquote>
-                    <p className="text-right mt-2 opacity-80">- Alan Kay</p>
-                </CardContent>
-            </Card>
-
-            <Card className="lg:col-span-2">
+        <div className="grid gap-8 md:grid-cols-2">
+            <Card>
                 <CardHeader>
                     <CardTitle className="font-headline flex items-center gap-2"><Target />Objectifs de la semaine</CardTitle>
                     <CardDescription>Restez sur la bonne voie avec vos objectifs pour cette semaine.</CardDescription>
