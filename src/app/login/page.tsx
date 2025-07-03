@@ -55,7 +55,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
           </div>
           <CardTitle className="font-headline text-3xl">L'Avantage Académique de Milionne</CardTitle>
           <CardDescription>Portail d'accès sécurisé</CardDescription>
@@ -65,7 +65,7 @@ export default function LoginPage() {
                 Veuillez utiliser l'authentification biométrique pour accéder à votre tableau de bord académique.
             </p>
             <div className="relative h-32 w-32">
-                <Image src="https://placehold.co/128x128/f1e6fc/be29ec" alt="Zone de scan biométrique" data-ai-hint="fingerprint scan" layout="fill" className="rounded-full" />
+                <Image src="https://placehold.co/128x128.png" alt="Zone de scan biométrique" data-ai-hint="fingerprint scan" layout="fill" className="rounded-full" />
             </div>
         </CardContent>
         <CardFooter>
