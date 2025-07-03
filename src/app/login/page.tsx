@@ -4,50 +4,26 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '@/context/auth-context';
-import { secureAccessWithGemini } from '@/ai/flows/secure-access';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Fingerprint, Loader2 } from 'lucide-react';
-import Image from 'next/image';
+import { LogIn, Loader2 } from 'lucide-react';
 
 export default function LoginPage() {
   const { login } = useAuth();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSecureLogin = async () => {
+  const handleLogin = () => {
     setIsLoading(true);
-    try {
-      // In a real app, you would capture actual biometric data.
-      // Here, we use a placeholder data URI for a 1x1 transparent pixel to simulate.
-      const placeholderBiometricData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
-      
-      const result = await secureAccessWithGemini({ biometricData: placeholderBiometricData });
-      
-      if (result.accessGranted) {
+    // Simulate a short delay for a better user experience
+    setTimeout(() => {
         toast({
-          title: "Authentification réussie",
-          description: "Bienvenue, Milionne!",
+            title: 'Connexion réussie',
+            description: 'Bienvenue, Milionne!',
         });
         login();
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Échec de l'authentification",
-          description: result.reason || "Veuillez réessayer.",
-        });
-      }
-    } catch (error) {
-      console.error('Secure login error:', error);
-      toast({
-        variant: "destructive",
-        title: "Une erreur est survenue",
-        description: "Impossible de terminer l'authentification. Veuillez réessayer plus tard.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    }, 500);
   };
 
   return (
@@ -58,24 +34,21 @@ export default function LoginPage() {
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
           </div>
           <CardTitle className="font-headline text-3xl">L'Avantage Académique de Milionne</CardTitle>
-          <CardDescription>Portail d'accès sécurisé</CardDescription>
+          <CardDescription>Portail d'accès étudiant</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center gap-6">
             <p className="text-center text-muted-foreground">
-                Veuillez utiliser l'authentification biométrique pour accéder à votre tableau de bord académique.
+                Cliquez sur le bouton ci-dessous pour accéder à votre tableau de bord.
             </p>
-            <div className="relative h-32 w-32">
-                <Image src="https://placehold.co/128x128.png" alt="Zone de scan biométrique" data-ai-hint="fingerprint scan" layout="fill" className="rounded-full" />
-            </div>
         </CardContent>
         <CardFooter>
-          <Button onClick={handleSecureLogin} disabled={isLoading} className="w-full" size="lg">
+          <Button onClick={handleLogin} disabled={isLoading} className="w-full" size="lg">
             {isLoading ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : (
-              <Fingerprint className="mr-2 h-4 w-4" />
+              <LogIn className="mr-2 h-4 w-4" />
             )}
-            {isLoading ? 'Authentification en cours...' : "S'authentifier avec Gemini Secure"}
+            {isLoading ? 'Connexion...' : 'Accéder au tableau de bord'}
           </Button>
         </CardFooter>
       </Card>
