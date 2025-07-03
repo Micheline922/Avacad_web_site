@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Puzzle, Layers, GraduationCap } from 'lucide-react';
+import { ArrowRight, Puzzle, FileText, GraduationCap } from 'lucide-react';
 
 const revisionTools = [
   {
@@ -11,10 +12,10 @@ const revisionTools = [
     link: '#',
   },
   {
-    title: 'Fiches de révision',
-    description: 'Créez et révisez des fiches pour les concepts et définitions clés.',
-    icon: Layers,
-    link: '#',
+    title: 'Synthèse de Documents',
+    description: "Téléchargez vos documents de cours (PDF, TXT) et obtenez un résumé et les mots-clés générés par l'IA.",
+    icon: FileText,
+    link: '/summarizer',
   },
   {
     title: "Conseils d'examen",
@@ -44,9 +45,11 @@ export default function RevisionPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <Button variant="outline" className="w-full">
-                Commencer maintenant <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+               <Link href={tool.link} className={tool.link === '#' ? "pointer-events-none" : ""}>
+                    <Button variant="outline" className="w-full" disabled={tool.link === '#'}>
+                        Commencer maintenant <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+              </Link>
             </CardContent>
           </Card>
         ))}
