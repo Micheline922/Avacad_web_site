@@ -34,13 +34,13 @@ const secureAccessPrompt = ai.definePrompt({
   name: 'secureAccessPrompt',
   input: {schema: SecureAccessInputSchema},
   output: {schema: SecureAccessOutputSchema},
-  prompt: `You are an AI assistant specializing in biometric authentication.
+  prompt: `Vous êtes un assistant IA spécialisé dans l'authentification biométrique.
 
-  Based on the provided biometric data, determine if access should be granted.
+  En fonction des données biométriques fournies, déterminez si l'accès doit être accordé.
 
-  Biometric Data: {{media url=biometricData}}
+  Données biométriques: {{media url=biometricData}}
 
-  Provide a JSON output indicating 'accessGranted' (true or false) and, if access is denied, a 'reason'.`,
+  Fournissez une sortie JSON indiquant 'accessGranted' (vrai ou faux) et, si l'accès est refusé, une 'raison'.`,
 });
 
 const secureAccessFlow = ai.defineFlow(
@@ -57,7 +57,7 @@ const secureAccessFlow = ai.defineFlow(
       console.error('Error during secure access:', error);
       return {
         accessGranted: false,
-        reason: 'Authentication failed due to an internal error.',
+        reason: "L'authentification a échoué en raison d'une erreur interne.",
       };
     }
   }

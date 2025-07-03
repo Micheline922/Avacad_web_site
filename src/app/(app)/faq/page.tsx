@@ -19,8 +19,8 @@ export default function FaqPage() {
         if (!concept.trim()) {
             toast({
                 variant: 'destructive',
-                title: 'Concept is empty',
-                description: 'Please enter a computer science concept to explain.'
+                title: 'Le concept est vide',
+                description: "Veuillez saisir un concept informatique à expliquer."
             });
             return;
         }
@@ -34,8 +34,8 @@ export default function FaqPage() {
             console.error("Failed to explain concept:", error);
             toast({
                 variant: 'destructive',
-                title: 'Explanation Failed',
-                description: 'An error occurred while fetching the explanation.'
+                title: "Échec de l'explication",
+                description: "Une erreur s'est produite lors de la récupération de l'explication."
             });
         } finally {
             setIsLoading(false);
@@ -51,22 +51,22 @@ export default function FaqPage() {
                             <Lightbulb className="h-8 w-8" />
                         </div>
                         <div>
-                            <CardTitle className="font-headline text-3xl">AI-Powered FAQ</CardTitle>
-                            <CardDescription>Stuck on a concept? Get a clear explanation from your AI tutor.</CardDescription>
+                            <CardTitle className="font-headline text-3xl">FAQ alimentée par l'IA</CardTitle>
+                            <CardDescription>Bloqué sur un concept ? Obtenez une explication claire de votre tuteur IA.</CardDescription>
                         </div>
                     </div>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
                         <Input
-                            placeholder="e.g., 'Big O Notation', 'Polymorphism', 'DNS'"
+                            placeholder="ex: 'Notation Big O', 'Polymorphisme', 'DNS'"
                             value={concept}
                             onChange={(e) => setConcept(e.target.value)}
                             disabled={isLoading}
                         />
                         <Button type="submit" disabled={isLoading} className="sm:w-auto w-full">
                             {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                            {isLoading ? 'Thinking...' : 'Explain'}
+                            {isLoading ? 'Réflexion...' : 'Expliquer'}
                         </Button>
                     </form>
 

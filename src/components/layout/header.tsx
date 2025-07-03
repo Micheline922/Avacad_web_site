@@ -6,11 +6,11 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import LanguageSwitcher from './language-switcher';
 
 const getTitleFromPathname = (pathname: string) => {
-  if (pathname.includes('/dashboard')) return 'Dashboard';
-  if (pathname.includes('/courses')) return 'My Courses';
-  if (pathname.includes('/revision')) return 'Revision Zone';
-  if (pathname.includes('/faq')) return 'AI FAQ';
-  return "Milionne's Academic Edge";
+  if (pathname.includes('/dashboard')) return 'Tableau de bord';
+  if (pathname.includes('/courses')) return 'Mes Cours';
+  if (pathname.includes('/revision')) return 'Zone de révision';
+  if (pathname.includes('/faq')) return 'FAQ IA';
+  return "L'Avantage Académique de Milionne";
 }
 
 const Header = () => {

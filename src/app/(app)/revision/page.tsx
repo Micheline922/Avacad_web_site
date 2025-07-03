@@ -5,20 +5,20 @@ import { ArrowRight, Puzzle, Layers, GraduationCap } from 'lucide-react';
 
 const revisionTools = [
   {
-    title: 'Interactive Quizzes',
-    description: 'Test your knowledge with quizzes tailored to your courses.',
+    title: 'Quiz interactifs',
+    description: 'Testez vos connaissances avec des quiz adaptés à vos cours.',
     icon: Puzzle,
     link: '#',
   },
   {
-    title: 'Flashcards',
-    description: 'Create and review flashcards for key concepts and definitions.',
+    title: 'Fiches de révision',
+    description: 'Créez et révisez des fiches pour les concepts et définitions clés.',
     icon: Layers,
     link: '#',
   },
   {
-    title: 'Exam Tips',
-    description: 'Get AI-powered advice and strategies to ace your exams.',
+    title: "Conseils d'examen",
+    description: "Obtenez des conseils et des stratégies alimentés par l'IA pour réussir vos examens.",
     icon: GraduationCap,
     link: '#',
   },
@@ -28,8 +28,8 @@ export default function RevisionPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-headline font-bold">Revision Zone</h1>
-        <p className="text-muted-foreground">Sharpen your skills and prepare for success.</p>
+        <h1 className="text-3xl font-headline font-bold">Zone de révision</h1>
+        <p className="text-muted-foreground">Affûtez vos compétences et préparez-vous à la réussite.</p>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {revisionTools.map((tool) => (
@@ -45,7 +45,7 @@ export default function RevisionPage() {
             </CardHeader>
             <CardContent>
               <Button variant="outline" className="w-full">
-                Start Now <ArrowRight className="ml-2 h-4 w-4" />
+                Commencer maintenant <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardContent>
           </Card>

@@ -30,12 +30,12 @@ const prompt = ai.definePrompt({
   name: 'generateCourseConclusionPrompt',
   input: {schema: GenerateCourseConclusionInputSchema},
   output: {schema: GenerateCourseConclusionOutputSchema},
-  prompt: `You are an AI assistant designed to generate conclusions for course slides.
+  prompt: `Vous êtes un assistant IA conçu pour générer des conclusions pour les diapositives de cours.
 
-  Based on the course name and slide content provided, generate a concise and informative conclusion.
+  En fonction du nom du cours et du contenu des diapositives fournis, générez une conclusion concise et informative.
 
-  Course Name: {{{courseName}}}
-  Slide Content: {{{slideContent}}}
+  Nom du cours: {{{courseName}}}
+  Contenu de la diapositive: {{{slideContent}}}
   `,
 });
 

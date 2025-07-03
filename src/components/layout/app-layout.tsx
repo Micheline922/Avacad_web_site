@@ -29,10 +29,10 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const { logout } = useAuth();
 
   const menuItems = [
-    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/courses', label: 'Courses', icon: BookOpen },
-    { href: '/revision', label: 'Revision Zone', icon: BrainCircuit },
-    { href: '/faq', label: 'AI FAQ', icon: HelpCircle },
+    { href: '/dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
+    { href: '/courses', label: 'Cours', icon: BookOpen },
+    { href: '/revision', label: 'Zone de révision', icon: BrainCircuit },
+    { href: '/faq', label: 'FAQ IA', icon: HelpCircle },
   ];
 
   return (
@@ -65,7 +65,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           <SidebarFooter>
             <Button variant="ghost" className="w-full justify-start gap-2" onClick={logout}>
               <LogOut size={16} />
-              <span className="group-data-[collapsible=icon]:hidden">Logout</span>
+              <span className="group-data-[collapsible=icon]:hidden">Déconnexion</span>
             </Button>
           </SidebarFooter>
         </Sidebar>

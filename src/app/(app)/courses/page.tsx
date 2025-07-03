@@ -8,26 +8,26 @@ import { ArrowRight } from 'lucide-react';
 const courses = [
   {
     id: 'cs101',
-    title: 'Introduction to Computer Science',
-    description: 'Fundamentals of programming and computer science concepts.',
+    title: "Introduction à l'informatique",
+    description: "Fondamentaux de la programmation et des concepts informatiques.",
     progress: 75,
   },
   {
     id: 'ds202',
-    title: 'Data Structures and Algorithms',
-    description: 'In-depth study of data structures and algorithmic techniques.',
+    title: 'Structures de données et algorithmes',
+    description: "Étude approfondie des structures de données et des techniques algorithmiques.",
     progress: 50,
   },
   {
     id: 'db303',
-    title: 'Database Systems',
-    description: 'Learn about relational databases, SQL, and database design.',
+    title: 'Systèmes de bases de données',
+    description: "Apprenez les bases de données relationnelles, SQL et la conception de bases de données.",
     progress: 25,
   },
    {
     id: 'os404',
-    title: 'Operating Systems',
-    description: 'Core concepts of operating systems, including processes, memory management, and file systems.',
+    title: "Systèmes d'exploitation",
+    description: "Concepts de base des systèmes d'exploitation, y compris les processus, la gestion de la mémoire et les systèmes de fichiers.",
     progress: 90,
   },
 ];
@@ -43,14 +43,14 @@ export default function CoursesPage() {
           </CardHeader>
           <CardContent className="flex-grow">
             <div>
-              <p className="text-sm text-muted-foreground mb-2">Progress: {course.progress}%</p>
+              <p className="text-sm text-muted-foreground mb-2">Progression: {course.progress}%</p>
               <Progress value={course.progress} className="w-full" />
             </div>
           </CardContent>
           <CardFooter>
             <Link href={`/courses/${course.id}`} passHref legacyBehavior>
               <Button className="w-full">
-                View Course <ArrowRight className="ml-2 h-4 w-4" />
+                Voir le cours <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </CardFooter>

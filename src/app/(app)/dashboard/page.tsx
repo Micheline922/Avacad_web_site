@@ -7,27 +7,27 @@ import { Lightbulb, Target, CheckCircle } from 'lucide-react';
 
 const MotivationHub = () => {
     const weeklyGoals = [
-        { id: 'goal1', label: 'Finish Data Structures assignment', completed: true },
-        { id: 'goal2', label: 'Review lecture notes for Algorithms', completed: false },
-        { id: 'goal3', label: 'Start research for final project', completed: false },
-        { id: 'goal4', label: 'Prepare for Friday\'s quiz', completed: true },
+        { id: 'goal1', label: 'Terminer le devoir de Structures de Données', completed: true },
+        { id: 'goal2', label: 'Réviser les notes de cours pour Algorithmes', completed: false },
+        { id: 'goal3', label: 'Commencer la recherche pour le projet final', completed: false },
+        { id: 'goal4', label: "Se préparer pour le quiz de vendredi", completed: true },
     ];
 
     const progressChecklist = [
-        { id: 'check1', label: 'Complete daily coding challenge', completed: true },
-        { id: 'check2', label: 'Read one chapter of "Clean Code"', completed: false },
-        { id: 'check3', label: 'Organize study materials', completed: true },
+        { id: 'check1', label: 'Terminer le défi de codage quotidien', completed: true },
+        { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
+        { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
     ];
 
     return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card className="lg:col-span-3 bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg">
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Quote of the Day</CardTitle>
+                    <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Citation du jour</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <blockquote className="text-xl italic">
-                        "The best way to predict the future is to invent it."
+                        "La meilleure façon de prédire l'avenir, c'est de l'inventer."
                     </blockquote>
                     <p className="text-right mt-2 opacity-80">- Alan Kay</p>
                 </CardContent>
@@ -35,8 +35,8 @@ const MotivationHub = () => {
 
             <Card className="lg:col-span-2">
                 <CardHeader>
-                    <CardTitle className="font-headline flex items-center gap-2"><Target />Weekly Goals</CardTitle>
-                    <CardDescription>Stay on track with your objectives for this week.</CardDescription>
+                    <CardTitle className="font-headline flex items-center gap-2"><Target />Objectifs de la semaine</CardTitle>
+                    <CardDescription>Restez sur la bonne voie avec vos objectifs pour cette semaine.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     {weeklyGoals.map((goal) => (
@@ -55,8 +55,8 @@ const MotivationHub = () => {
 
             <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline flex items-center gap-2"><CheckCircle />Daily Progress</CardTitle>
-                    <CardDescription>Small steps lead to big achievements.</CardDescription>
+                    <CardTitle className="font-headline flex items-center gap-2"><CheckCircle />Progrès quotidiens</CardTitle>
+                    <CardDescription>Les petits pas mènent à de grandes réalisations.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                      {progressChecklist.map((item) => (

@@ -23,8 +23,8 @@ export default function ConclusionGenerator({ courseName, initialContent = '' }:
         if (!slideContent.trim()) {
             toast({
                 variant: 'destructive',
-                title: 'Content is empty',
-                description: 'Please provide some slide content to generate a conclusion.'
+                title: 'Le contenu est vide',
+                description: 'Veuillez fournir du contenu de diapositive pour générer une conclusion.'
             });
             return;
         }
@@ -35,15 +35,15 @@ export default function ConclusionGenerator({ courseName, initialContent = '' }:
             const result = await generateCourseConclusion({ courseName, slideContent });
             setConclusion(result.conclusion);
             toast({
-                title: 'Conclusion Generated!',
-                description: 'The AI has summarized your course material.',
+                title: 'Conclusion générée !',
+                description: "L'IA a résumé le matériel de votre cours.",
             });
         } catch (error) {
             console.error("Failed to generate conclusion:", error);
             toast({
                 variant: 'destructive',
-                title: 'Generation Failed',
-                description: 'An error occurred while generating the conclusion.'
+                title: 'La génération a échoué',
+                description: "Une erreur s'est produite lors de la génération de la conclusion."
             });
         } finally {
             setIsLoading(false);
@@ -53,15 +53,15 @@ export default function ConclusionGenerator({ courseName, initialContent = '' }:
     return (
         <Card>
             <CardHeader>
-                <CardTitle className="font-headline text-xl">Course Conclusion Generator</CardTitle>
-                <CardDescription>Let AI summarize your course slides into a concise conclusion.</CardDescription>
+                <CardTitle className="font-headline text-xl">Générateur de conclusion de cours</CardTitle>
+                <CardDescription>Laissez l'IA résumer les diapositives de votre cours en une conclusion concise.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div>
-                    <label htmlFor="slideContent" className="text-sm font-medium">Slide Content</label>
+                    <label htmlFor="slideContent" className="text-sm font-medium">Contenu de la diapositive</label>
                     <Textarea
                         id="slideContent"
-                        placeholder="Paste the content from your slides here..."
+                        placeholder="Collez le contenu de vos diapositives ici..."
                         value={slideContent}
                         onChange={(e) => setSlideContent(e.target.value)}
                         className="mt-1 min-h-[150px]"
@@ -70,13 +70,13 @@ export default function ConclusionGenerator({ courseName, initialContent = '' }:
                 </div>
                 <Button onClick={handleGenerate} disabled={isLoading} className="w-full">
                     {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />}
-                    {isLoading ? 'Generating...' : 'Generate Conclusion'}
+                    {isLoading ? 'Génération en cours...' : 'Générer la conclusion'}
                 </Button>
                 {conclusion && (
                     <Card className="bg-primary/5 border-primary/20">
                          <CardHeader className="flex flex-row items-center gap-2 space-y-0 pb-2">
                              <Sparkles className="h-5 w-5 text-primary"/>
-                            <CardTitle className="font-headline text-lg text-primary">Generated Conclusion</CardTitle>
+                            <CardTitle className="font-headline text-lg text-primary">Conclusion générée</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-foreground/80">{conclusion}</p>

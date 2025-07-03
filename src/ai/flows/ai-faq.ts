@@ -29,7 +29,7 @@ const prompt = ai.definePrompt({
   name: 'explainConceptPrompt',
   input: {schema: ExplainConceptInputSchema},
   output: {schema: ExplainConceptOutputSchema},
-  prompt: `You are an expert computer science tutor. Explain the following concept in a way that is easy for a student to understand:
+  prompt: `Vous êtes un tuteur expert en informatique. Expliquez le concept suivant d'une manière facile à comprendre pour un étudiant :
 
 Concept: {{{concept}}}`,config: {
     safetySettings: [

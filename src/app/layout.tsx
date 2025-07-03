@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/context/auth-context';
 
 export const metadata: Metadata = {
-  title: "Milionne's Academic Edge",
-  description: 'Your personal AI-powered academic assistant.',
+  title: "L'Avantage Académique de Milionne",
+  description: "Votre assistant académique personnel alimenté par l'IA.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
