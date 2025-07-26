@@ -12,6 +12,7 @@ const getTitleFromPathname = (pathname: string) => {
   if (pathname.includes('/faq')) return 'FAQ IA';
   if (pathname.includes('/summarizer')) return 'Synthèse de Documents';
   if (pathname.includes('/book-summarizer')) return 'Résumés de livres IA';
+  if (pathname.includes('/exam-tips')) return "Conseils d'examen";
   return "L'Avantage Académique de Milionne";
 }
 

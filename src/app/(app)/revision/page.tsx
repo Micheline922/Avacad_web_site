@@ -21,7 +21,7 @@ const revisionTools = [
     title: "Conseils d'examen",
     description: "Obtenez des conseils et des stratégies alimentés par l'IA pour réussir vos examens.",
     icon: GraduationCap,
-    link: '#',
+    link: '/exam-tips',
   },
 ];
 
