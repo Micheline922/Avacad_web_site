@@ -22,6 +22,8 @@ const initialWeeklyGoals: Goal[] = [
     { id: 'goal2', label: 'Réviser les notes de cours pour Algorithmes', completed: false },
     { id: 'goal3', label: 'Commencer la recherche pour le projet final', completed: false },
     { id: 'goal4', label: "Se préparer pour le quiz de vendredi", completed: true },
+    { id: 'goal5', label: "Planifier la semaine d'étude", completed: true },
+    { id: 'goal6', label: "Participer au groupe d'étude de Droit Civil", completed: false },
 ];
 
 const MotivationHub = () => {
