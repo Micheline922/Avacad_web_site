@@ -110,7 +110,7 @@ export default function CourseDetailPage() {
                             <Checkbox id={`assign-${assignment.id}`} defaultChecked={assignment.completed} />
                             <label
                                 htmlFor={`assign-${assignment.id}`}
-                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${assignment.completed ? 'line-through text-muted-foreground' : ''}`}
+                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${assignment.completed ? 'text-muted-foreground' : ''}`}
                             >
                                 {assignment.title}
                             </label>
