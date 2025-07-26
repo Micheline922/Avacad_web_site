@@ -36,6 +36,8 @@ const prompt = ai.definePrompt({
 
   Nom du cours: {{{courseName}}}
   Contenu de la diapositive: {{{slideContent}}}
+  
+  Répondez en français.
   `,
 });
 

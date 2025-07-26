@@ -31,7 +31,9 @@ const prompt = ai.definePrompt({
   output: {schema: SummarizeBookOutputSchema},
   prompt: `Vous êtes un expert en informatique et un excellent communicateur. Résumez le livre d'informatique suivant et extrayez les mots-clés principaux. Le résumé doit couvrir les concepts clés, la structure et le public cible du livre. Les mots-clés doivent être une liste des termes ou concepts les plus importants abordés.
 
-Titre du livre : {{{bookTitle}}}`,
+Titre du livre : {{{bookTitle}}}
+
+Répondez en français.`,
 });
 
 const summarizeBookFlow = ai.defineFlow(

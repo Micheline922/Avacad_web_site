@@ -33,7 +33,9 @@ const prompt = ai.definePrompt({
 
 Générez une liste de conseils d'étude spécifiques et exploitables. Incluez des stratégies pour comprendre les concepts clés, des techniques de mémorisation, des approches de résolution de problèmes et des conseils pour le jour de l'examen.
 
-En plus des conseils, suggérez une liste de ressources supplémentaires, telles que des tutoriels en ligne, des sites web de pratique ou des chaînes YouTube pertinentes qui pourraient aider l'étudiant à se préparer.`,
+En plus des conseils, suggérez une liste de ressources supplémentaires, telles que des tutoriels en ligne, des sites web de pratique ou des chaînes YouTube pertinentes qui pourraient aider l'étudiant à se préparer.
+
+Répondez en français.`,
 });
 
 const generateExamTipsFlow = ai.defineFlow(

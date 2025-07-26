@@ -31,7 +31,9 @@ const prompt = ai.definePrompt({
   output: {schema: ExplainConceptOutputSchema},
   prompt: `Vous êtes un tuteur expert en informatique. Expliquez le concept suivant d'une manière facile à comprendre pour un étudiant :
 
-Concept: {{{concept}}}`,config: {
+Concept: {{{concept}}}
+
+Répondez en français.`,config: {
     safetySettings: [
       {
         category: 'HARM_CATEGORY_HATE_SPEECH',

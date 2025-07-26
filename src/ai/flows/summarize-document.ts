@@ -32,7 +32,9 @@ const prompt = ai.definePrompt({
   prompt: `Vous êtes un assistant IA conçu pour aider les étudiants. Résumez le document suivant et extrayez les mots-clés principaux. Le résumé doit être concis et facile à comprendre. Les mots-clés doivent être une liste des termes ou concepts les plus importants du document.
 
 Contenu du document :
-{{{documentContent}}}`,
+{{{documentContent}}}
+
+Répondez en français.`,
 });
 
 const summarizeDocumentFlow = ai.defineFlow(

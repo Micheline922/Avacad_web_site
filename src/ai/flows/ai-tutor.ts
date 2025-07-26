@@ -38,6 +38,8 @@ Contexte du cours:
 
 Question de l'étudiant / Concept à expliquer:
 {{{concept}}}
+
+Répondez en français.
 `,
 config: {
     safetySettings: [
