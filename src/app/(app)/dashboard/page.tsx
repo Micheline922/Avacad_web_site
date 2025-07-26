@@ -43,6 +43,12 @@ const MotivationHub = () => {
         updatedGoals[index].label = newLabel;
         setTempGoals(updatedGoals);
     };
+    
+    const handleGoalCompletion = (goalId: string) => {
+      setWeeklyGoals(weeklyGoals.map(goal => 
+        goal.id === goalId ? { ...goal, completed: !goal.completed } : goal
+      ));
+    };
 
     const openEditDialog = () => {
         setTempGoals([...weeklyGoals]);
@@ -59,12 +65,6 @@ const MotivationHub = () => {
         { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
         { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
     ];
-    
-    const handleGoalCompletion = (goalId: string) => {
-      setWeeklyGoals(weeklyGoals.map(goal => 
-        goal.id === goalId ? { ...goal, completed: !goal.completed } : goal
-      ));
-    };
 
     return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -135,14 +135,8 @@ const MotivationHub = () => {
                             mode="single"
                             selected={new Date()}
                             locale={fr}
-                            className="w-full border-0 shadow-none"
-                            classNames={{
-                                months: "w-full",
-                                month: "w-full",
-                                table: "w-full",
-                                head_row: "w-full",
-                                row: "w-full",
-                            }}
+                            className="p-3"
+                            numberOfMonths={1}
                         />
                     </CardContent>
                 </Card>
