@@ -25,6 +25,12 @@ const csBooks = [
   "Operating System Concepts (Dinosaur Book)",
   "Database System Concepts",
   "Cracking the Coding Interview",
+  "Électricité : Principes et applications",
+  "Droit civil : Introduction et personnes",
+  "Législation sociale expliquée",
+  "Principes de l'économie générale",
+  "Programmation Web avec HTML5, CSS3 et JavaScript",
+  "Architecture de l'ordinateur : Une approche quantitative",
 ];
 
 export default function BookSummarizerPage() {
