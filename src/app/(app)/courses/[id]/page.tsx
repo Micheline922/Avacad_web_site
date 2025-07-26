@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -10,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { format, isPast, differenceInDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import ConclusionGenerator from '@/components/courses/conclusion-generator';
+import AiTutor from '@/components/courses/ai-tutor';
 
 const mockCourses = {
   cs101: {
@@ -80,6 +82,7 @@ export default function CourseDetailPage() {
           <TabsList>
             <TabsTrigger value="notes">Notes</TabsTrigger>
             <TabsTrigger value="assignments">Devoirs</TabsTrigger>
+            <TabsTrigger value="tutor">Tuteur IA</TabsTrigger>
             <TabsTrigger value="conclusion">Conclusion IA</TabsTrigger>
           </TabsList>
           
@@ -110,7 +113,7 @@ export default function CourseDetailPage() {
                             <Checkbox id={`assign-${assignment.id}`} defaultChecked={assignment.completed} />
                             <label
                                 htmlFor={`assign-${assignment.id}`}
-                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${assignment.completed ? 'text-muted-foreground' : ''}`}
+                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                                 {assignment.title}
                             </label>
@@ -120,6 +123,10 @@ export default function CourseDetailPage() {
                     ))}
                 </CardContent>
             </Card>
+          </TabsContent>
+          
+          <TabsContent value="tutor" className="mt-4">
+            <AiTutor courseContext={course.notes} />
           </TabsContent>
 
           <TabsContent value="conclusion" className="mt-4">
