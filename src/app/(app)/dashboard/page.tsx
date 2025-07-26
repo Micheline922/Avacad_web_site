@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Target, CheckCircle, Edit } from 'lucide-react';
@@ -74,7 +74,7 @@ const MotivationHub = () => {
         { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
     ];
 
-    const sundayMatcher = { dayOfWeek: 0 };
+    const sundayMatcher = { dayOfWeek: [0] };
     const sundayStyle = { color: 'hsl(var(--primary))', fontWeight: 'bold' };
 
     return (
@@ -141,7 +141,7 @@ const MotivationHub = () => {
                     <CardHeader>
                         <CardTitle className="font-headline">Calendrier</CardTitle>
                     </CardHeader>
-                    <CardContent className="flex justify-center p-0">
+                    <CardContent className="flex justify-center">
                         <Calendar
                             mode="single"
                             selected={currentDate}
@@ -149,7 +149,7 @@ const MotivationHub = () => {
                             month={currentDate}
                             onMonthChange={setCurrentDate}
                             locale={fr}
-                            className="p-3"
+                            className="rounded-md"
                             numberOfMonths={1}
                             modifiers={{ sunday: sundayMatcher }}
                             modifiersStyles={{ sunday: sundayStyle }}
