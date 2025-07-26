@@ -28,17 +28,23 @@ const initialWeeklyGoals: Goal[] = [
 
 const MotivationHub = () => {
     const [weeklyGoals, setWeeklyGoals] = useState<Goal[]>(initialWeeklyGoals);
-    const [isSaturday, setIsSaturday] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [tempGoals, setTempGoals] = useState<Goal[]>([]);
+    const [currentDate, setCurrentDate] = useState(new Date('2025-07-27T00:00:00'));
 
     useEffect(() => {
-        const today = new Date();
-        // Day 6 is Saturday
-        if (today.getDay() === 6) {
-            setIsSaturday(true);
-        }
+        const interval = setInterval(() => {
+            setCurrentDate(prevDate => {
+                const newDate = new Date(prevDate);
+                newDate.setDate(newDate.getDate() + 1);
+                return newDate;
+            });
+        }, 24 * 60 * 60 * 1000); // Mettre à jour toutes les 24 heures
+
+        return () => clearInterval(interval);
     }, []);
+
+    const isSaturday = currentDate.getDay() === 6;
 
     const handleGoalChange = (index: number, newLabel: string) => {
         const updatedGoals = [...tempGoals];
@@ -67,6 +73,9 @@ const MotivationHub = () => {
         { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
         { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
     ];
+
+    const sundayMatcher = { dayOfWeek: 0 };
+    const sundayStyle = { color: 'hsl(var(--primary))', fontWeight: 'bold' };
 
     return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -135,10 +144,15 @@ const MotivationHub = () => {
                     <CardContent className="flex justify-center p-0">
                         <Calendar
                             mode="single"
-                            selected={new Date()}
+                            selected={currentDate}
+                            onSelect={(date) => date && setCurrentDate(date)}
+                            month={currentDate}
+                            onMonthChange={setCurrentDate}
                             locale={fr}
                             className="p-3"
                             numberOfMonths={1}
+                            modifiers={{ sunday: sundayMatcher }}
+                            modifiersStyles={{ sunday: sundayStyle }}
                         />
                     </CardContent>
                 </Card>
