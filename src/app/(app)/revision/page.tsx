@@ -2,14 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Puzzle, FileText, GraduationCap } from 'lucide-react';
+import { ArrowRight, Puzzle, FileText, GraduationCap, Library } from 'lucide-react';
 
 const revisionTools = [
   {
-    title: 'Quiz interactifs',
-    description: 'Testez vos connaissances avec des quiz adaptés à vos cours.',
-    icon: Puzzle,
-    link: '#',
+    title: 'Résumés de livres IA',
+    description: 'Obtenez des résumés et mots-clés de livres informatiques essentiels.',
+    icon: Library,
+    link: '/book-summarizer',
   },
   {
     title: 'Synthèse de Documents',
