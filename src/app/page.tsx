@@ -42,11 +42,11 @@ export default function LandingPage() {
                 <Logo />
             </Link>
           <nav className="flex items-center gap-4">
-             <Link href="/dashboard" passHref legacyBehavior>
-                <Button>
+             <Button asChild>
+                <Link href="/dashboard">
                     Tableau de Bord <LogIn className="ml-2" />
-                </Button>
-            </Link>
+                </Link>
+            </Button>
           </nav>
         </div>
       </header>
@@ -60,11 +60,11 @@ export default function LandingPage() {
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                     L'Avantage Académique de Milionne est votre assistant personnel alimenté par l'IA, conçu pour vous aider à exceller dans vos études.
                 </p>
-                 <Link href="/dashboard" passHref legacyBehavior>
-                    <Button size="lg" className="mt-8">
+                 <Button size="lg" className="mt-8" asChild>
+                    <Link href="/dashboard">
                         Commencer Maintenant
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
         </section>
 

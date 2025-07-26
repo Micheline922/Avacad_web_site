@@ -49,15 +49,16 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <Link href={item.href} legacyBehavior passHref>
                     <SidebarMenuButton
+                      asChild
                       isActive={pathname.startsWith(item.href)}
                       tooltip={{ children: item.label }}
                     >
-                      <item.icon />
-                      <span>{item.label}</span>
+                      <Link href={item.href}>
+                        <item.icon />
+                        <span>{item.label}</span>
+                      </Link>
                     </SidebarMenuButton>
-                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>

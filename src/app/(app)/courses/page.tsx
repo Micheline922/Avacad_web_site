@@ -48,11 +48,11 @@ export default function CoursesPage() {
             </div>
           </CardContent>
           <CardFooter>
-            <Link href={`/courses/${course.id}`} passHref legacyBehavior>
-              <Button className="w-full">
+            <Button className="w-full" asChild>
+              <Link href={`/courses/${course.id}`}>
                 Voir le cours <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </CardFooter>
         </Card>
       ))}
