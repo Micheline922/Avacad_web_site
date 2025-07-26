@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, BrainCircuit, BookOpen, Lightbulb, LogIn } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { FileText, BrainCircuit, BookOpen, Lightbulb, LogIn, ArrowRight } from 'lucide-react';
 
 const Logo = () => (
     <div className="flex items-center gap-2">
@@ -19,7 +19,7 @@ const features = [
   {
     icon: BrainCircuit,
     title: 'Zone de Révision IA',
-    description: "Préparez-vous efficacement avec des outils de révision, y compris des quiz interactifs et des conseils d'examen.",
+    description: "Préparez-vous efficacement avec des outils de révision, y compris des conseils d'examen.",
   },
   {
     icon: BookOpen,
@@ -31,6 +31,25 @@ const features = [
     title: 'FAQ par IA',
     description: "Ne restez plus bloqué. Obtenez des explications claires sur des concepts complexes de la part de votre tuteur IA.",
   },
+];
+
+const featuredCourses = [
+    {
+        title: "Introduction à l'informatique",
+        description: "Les bases de la programmation et de la pensée algorithmique.",
+    },
+    {
+        title: "Principes de l'économie générale",
+        description: "Comprendre l'offre, la demande et les politiques monétaires.",
+    },
+    {
+        title: "Droit civil et législation sociale",
+        description: "Une introduction aux contrats et à la responsabilité civile.",
+    },
+    {
+        title: "Programmation Web",
+        description: "Créez des sites web modernes avec HTML, CSS et JavaScript.",
+    },
 ];
 
 export default function LandingPage() {
@@ -92,7 +111,35 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-20 bg-muted/50">
+        <section id="courses-preview" className="py-20 bg-muted/50">
+            <div className="container">
+                <div className="text-center mb-12">
+                    <h2 className="font-headline text-3xl font-bold">Découvrez un aperçu de nos cours</h2>
+                    <p className="text-muted-foreground mt-2">Des sujets variés pour élargir vos connaissances.</p>
+                </div>
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    {featuredCourses.map((course) => (
+                        <Card key={course.title}>
+                            <CardHeader>
+                                <CardTitle className="font-headline text-xl">{course.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription>{course.description}</CardDescription>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+                <div className="text-center mt-12">
+                    <Button asChild variant="outline">
+                        <Link href="/courses">
+                            Voir tous les cours <ArrowRight className="ml-2" />
+                        </Link>
+                    </Button>
+                </div>
+            </div>
+        </section>
+
+        <section className="py-20">
            <div className="container max-w-3xl mx-auto">
              <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg">
                 <CardHeader>
