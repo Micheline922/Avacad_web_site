@@ -116,7 +116,7 @@ const MotivationHub = () => {
                             />
                             <label
                                 htmlFor={goal.id}
-                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground line-through' : ''}`}
+                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground' : ''}`}
                             >
                                 {goal.label}
                             </label>
@@ -152,7 +152,7 @@ const MotivationHub = () => {
                                 <Checkbox id={item.id} defaultChecked={item.completed} />
                                 <label
                                     htmlFor={item.id}
-                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground line-through' : ''}`}
+                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground' : ''}`}
                                 >
                                     {item.label}
                                 </label>
