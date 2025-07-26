@@ -116,7 +116,7 @@ const MotivationHub = () => {
                             />
                             <label
                                 htmlFor={goal.id}
-                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground' : ''}`}
+                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground line-through' : ''}`}
                             >
                                 {goal.label}
                             </label>
@@ -130,16 +130,18 @@ const MotivationHub = () => {
                     <CardHeader>
                         <CardTitle className="font-headline">Calendrier</CardTitle>
                     </CardHeader>
-                    <CardContent className="flex justify-center">
+                    <CardContent className="flex justify-center p-0">
                         <Calendar
                             mode="single"
                             selected={new Date()}
                             locale={fr}
-                            className="p-0"
+                            className="w-full border-0 shadow-none"
                             classNames={{
-                                head_cell: 'w-full',
-                                cell: 'w-full',
-                                day: 'w-full'
+                                months: "w-full",
+                                month: "w-full",
+                                table: "w-full",
+                                head_row: "w-full",
+                                row: "w-full",
                             }}
                         />
                     </CardContent>
@@ -156,7 +158,7 @@ const MotivationHub = () => {
                                 <Checkbox id={item.id} defaultChecked={item.completed} />
                                 <label
                                     htmlFor={item.id}
-                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground' : ''}`}
+                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground line-through' : ''}`}
                                 >
                                     {item.label}
                                 </label>
