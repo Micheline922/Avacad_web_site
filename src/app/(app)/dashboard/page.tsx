@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Target, CheckCircle, Edit } from 'lucide-react';
@@ -30,21 +30,9 @@ const MotivationHub = () => {
     const [weeklyGoals, setWeeklyGoals] = useState<Goal[]>(initialWeeklyGoals);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [tempGoals, setTempGoals] = useState<Goal[]>([]);
-    const [currentDate, setCurrentDate] = useState(new Date('2025-07-27T00:00:00'));
+    const [date, setDate] = useState<Date | undefined>(new Date());
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDate(prevDate => {
-                const newDate = new Date(prevDate);
-                newDate.setDate(newDate.getDate() + 1);
-                return newDate;
-            });
-        }, 24 * 60 * 60 * 1000); // Mettre à jour toutes les 24 heures
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const isSaturday = currentDate.getDay() === 6;
+    const isSaturday = date?.getDay() === 6;
 
     const handleGoalChange = (index: number, newLabel: string) => {
         const updatedGoals = [...tempGoals];
@@ -73,10 +61,7 @@ const MotivationHub = () => {
         { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
         { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
     ];
-
-    const sundayMatcher = { dayOfWeek: [0] };
-    const sundayStyle = { color: 'hsl(var(--primary))', fontWeight: 'bold' };
-
+    
     return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card className="lg:col-span-2">
@@ -144,15 +129,11 @@ const MotivationHub = () => {
                     <CardContent className="flex justify-center">
                         <Calendar
                             mode="single"
-                            selected={currentDate}
-                            onSelect={(date) => date && setCurrentDate(date)}
-                            month={currentDate}
-                            onMonthChange={setCurrentDate}
+                            selected={date}
+                            onSelect={setDate}
                             locale={fr}
                             className="rounded-md"
                             numberOfMonths={1}
-                            modifiers={{ sunday: sundayMatcher }}
-                            modifiersStyles={{ sunday: sundayStyle }}
                         />
                     </CardContent>
                 </Card>
