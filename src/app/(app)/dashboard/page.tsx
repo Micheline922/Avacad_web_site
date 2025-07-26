@@ -28,7 +28,7 @@ const MotivationHub = () => {
     const [weeklyGoals, setWeeklyGoals] = useState<Goal[]>(initialWeeklyGoals);
     const [isSaturday, setIsSaturday] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [tempGoals, setTempGoals] = useState<Goal[]>(initialWeeklyGoals);
+    const [tempGoals, setTempGoals] = useState<Goal[]>([]);
 
     useEffect(() => {
         const today = new Date();
@@ -42,6 +42,11 @@ const MotivationHub = () => {
         const updatedGoals = [...tempGoals];
         updatedGoals[index].label = newLabel;
         setTempGoals(updatedGoals);
+    };
+
+    const openEditDialog = () => {
+        setTempGoals([...weeklyGoals]);
+        setIsDialogOpen(true);
     };
 
     const saveGoals = () => {
@@ -72,7 +77,7 @@ const MotivationHub = () => {
                         </div>
                         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button variant="outline" size="sm" disabled={!isSaturday}>
+                                <Button variant="outline" size="sm" disabled={!isSaturday} onClick={openEditDialog}>
                                     <Edit className="mr-2 h-4 w-4" />
                                     Modifier
                                 </Button>
@@ -111,7 +116,7 @@ const MotivationHub = () => {
                             />
                             <label
                                 htmlFor={goal.id}
-                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground line-through' : ''}`}
+                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground' : ''}`}
                             >
                                 {goal.label}
                             </label>
@@ -148,10 +153,10 @@ const MotivationHub = () => {
                     <CardContent className="space-y-4">
                          {progressChecklist.map((item) => (
                             <div key={item.id} className="flex items-center space-x-3 p-3 rounded-md bg-background hover:bg-secondary transition-colors">
-                                <Checkbox id={item.id} checked={item.completed} />
+                                <Checkbox id={item.id} defaultChecked={item.completed} />
                                 <label
                                     htmlFor={item.id}
-                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground line-through' : ''}`}
+                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground' : ''}`}
                                 >
                                     {item.label}
                                 </label>
