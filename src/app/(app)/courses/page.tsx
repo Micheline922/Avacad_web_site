@@ -30,11 +30,41 @@ const courses = [
     description: "Concepts de base des systèmes d'exploitation, y compris les processus, la gestion de la mémoire et les systèmes de fichiers.",
     progress: 90,
   },
+  {
+    id: 'elec101',
+    title: "Électricité : Principes et applications",
+    description: "Explorez les lois fondamentales de l'électricité et leurs applications pratiques.",
+    progress: 60,
+  },
+  {
+    id: 'droit201',
+    title: "Droit civil et législation sociale",
+    description: "Introduction aux concepts du droit civil et de la législation sociale.",
+    progress: 40,
+  },
+  {
+    id: 'eco101',
+    title: "Principes de l'économie générale",
+    description: "Comprendre les théories et les mécanismes de base de l'économie.",
+    progress: 80,
+  },
+  {
+    id: 'webdev301',
+    title: "Programmation Web",
+    description: "Créez des sites web dynamiques avec HTML5, CSS3 et JavaScript.",
+    progress: 70,
+  },
+  {
+    id: 'archi401',
+    title: "Architecture de l'ordinateur",
+    description: "Étude de la conception et de l'organisation des systèmes informatiques.",
+    progress: 30,
+  },
 ];
 
 export default function CoursesPage() {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {courses.map((course) => (
         <Card key={course.id} className="flex flex-col">
           <CardHeader>

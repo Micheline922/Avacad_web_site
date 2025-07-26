@@ -48,6 +48,46 @@ const mockCourses = {
         { id: '2', title: "Implémentation d'un gestionnaire de mémoire", dueDate: '2024-10-15', completed: false },
     ],
   },
+  elec101: {
+    title: "Électricité : Principes et applications",
+    notes: "Ce cours explore les lois fondamentales de l'électricité, y compris la loi d'Ohm, les circuits en série et en parallèle, et les concepts de base de l'électromagnétisme. Les applications pratiques dans les systèmes de puissance et l'électronique sont également abordées.",
+    assignments: [
+      { id: '1', title: "Analyse de circuits simples", dueDate: '2024-09-20', completed: false },
+      { id: '2', title: "Laboratoire sur la loi d'Ohm", dueDate: '2024-10-04', completed: false },
+    ],
+  },
+  droit201: {
+    title: "Droit civil et législation sociale",
+    notes: "Introduction aux principes fondamentaux du droit civil, y compris les contrats, la responsabilité et les biens. Le cours aborde également les bases de la législation sociale, couvrant le droit du travail et la sécurité sociale.",
+    assignments: [
+      { id: '1', title: "Étude de cas sur un contrat", dueDate: '2024-09-25', completed: true },
+      { id: '2', title: "Recherche sur la législation du travail", dueDate: '2024-10-10', completed: false },
+    ],
+  },
+  eco101: {
+    title: "Principes de l'économie générale",
+    notes: "Ce cours fournit une compréhension des concepts économiques de base, tels que l'offre et la demande, la microéconomie, la macroéconomie, l'inflation et la politique monétaire. Il explore comment ces principes s'appliquent aux décisions des individus et des gouvernements.",
+    assignments: [
+      { id: '1', title: "Analyse de l'offre et de la demande", dueDate: '2024-09-18', completed: true },
+      { id: '2', title: "Dissertation sur la politique monétaire", dueDate: '2024-10-02', completed: false },
+    ],
+  },
+  webdev301: {
+    title: "Programmation Web",
+    notes: "Apprenez à construire des sites web modernes et interactifs en utilisant HTML5 pour la structure, CSS3 pour le style et JavaScript pour la fonctionnalité. Le cours couvre également les principes de la conception réactive et l'interaction avec les API.",
+    assignments: [
+      { id: '1', title: "Créer une page de portfolio statique", dueDate: '2024-09-22', completed: true },
+      { id: '2', title: "Développer une application 'To-Do List' interactive", dueDate: '2024-10-12', completed: false },
+    ],
+  },
+  archi401: {
+    title: "Architecture de l'ordinateur",
+    notes: "Ce cours examine l'organisation et la conception des systèmes informatiques. Les sujets incluent la conception du processeur, la hiérarchie de la mémoire, les systèmes d'entrée/sortie et les concepts de traitement parallèle.",
+    assignments: [
+      { id: '1', title: "Conception d'une unité arithmétique et logique (ALU)", dueDate: '2024-10-08', completed: false },
+      { id: '2', title: "Simulation d'un pipeline de processeur", dueDate: '2024-10-22', completed: false },
+    ],
+  },
 };
 
 type Assignment = { id: string; title: string; dueDate: string; completed: boolean; };
