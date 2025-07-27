@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { PT_Sans, Playfair_Display } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/context/auth-context';
@@ -30,6 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
+       <head>
+        <Script
+          src="https://polyfill.io/v3/polyfill.min.js?features=default"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className={cn("font-body antialiased", ptSans.variable, playfairDisplay.variable)}>
         <AuthProvider>
           {children}
