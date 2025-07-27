@@ -66,7 +66,7 @@ export default function CoursesPage() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {courses.map((course) => (
-        <Link href={`/courses/${course.id}`} key={course.id} className="no-underline">
+        <Link href={`/courses/${course.id}?tab=tutor`} key={course.id} className="no-underline">
           <Card className="flex flex-col h-full hover:border-primary transition-all">
             <CardHeader>
               <CardTitle as="h3" className="font-headline">{course.title}</CardTitle>
