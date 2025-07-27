@@ -66,25 +66,25 @@ export default function CoursesPage() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {courses.map((course) => (
-        <Link href={`/courses/${course.id}?tab=tutor`} key={course.id} className="no-underline">
-          <Card className="flex flex-col h-full hover:border-primary transition-all">
-            <CardHeader>
-              <CardTitle className="font-headline">{course.title}</CardTitle>
-              <CardDescription>{course.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Progression: {course.progress}%</p>
-                <Progress value={course.progress} className="w-full" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button className="w-full">
-                  Voir le cours <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </CardFooter>
-          </Card>
-        </Link>
+        <Card key={course.id} className="flex flex-col h-full hover:border-primary transition-all">
+          <CardHeader>
+            <CardTitle className="font-headline">{course.title}</CardTitle>
+            <CardDescription>{course.description}</CardDescription>
+          </CardHeader>
+          <CardContent className="flex-grow">
+            <div>
+              <p className="text-sm text-muted-foreground mb-2">Progression: {course.progress}%</p>
+              <Progress value={course.progress} className="w-full" />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button asChild className="w-full">
+              <Link href={`/courses/${course.id}?tab=tutor`}>
+                Voir le cours <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </CardFooter>
+        </Card>
       ))}
     </div>
   );
