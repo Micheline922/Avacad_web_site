@@ -77,7 +77,7 @@ export default function LandingPage() {
                     Libérez Votre Potentiel Académique
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                    L'Avantage Académique de Milionne est votre assistant personnel alimenté par l'IA, conçu pour vous aider à exceller dans vos études.
+                    Un outil innovant conçu pour stimuler votre réussite scolaire. Il vous accompagne dans vos révisions, vous aide à organiser vos idées, et simplifie l’accès aux ressources essentielles pour apprendre efficacement. Que ce soit pour clarifier un concept, structurer une dissertation ou renforcer vos compétences, Milionne est pensé pour vous guider vers l’excellence.
                 </p>
                  <Button size="lg" className="mt-8" asChild>
                     <Link href="/dashboard">
