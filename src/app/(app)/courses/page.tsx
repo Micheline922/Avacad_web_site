@@ -69,7 +69,7 @@ export default function CoursesPage() {
         <Link href={`/courses/${course.id}?tab=tutor`} key={course.id} className="no-underline">
           <Card className="flex flex-col h-full hover:border-primary transition-all">
             <CardHeader>
-              <CardTitle as="h3" className="font-headline">{course.title}</CardTitle>
+              <CardTitle className="font-headline">{course.title}</CardTitle>
               <CardDescription>{course.description}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
