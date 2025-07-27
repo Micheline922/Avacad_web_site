@@ -6,16 +6,10 @@ import { ArrowRight, Puzzle, FileText, GraduationCap, Library } from 'lucide-rea
 
 const revisionTools = [
   {
-    title: 'Résumés de livres IA',
-    description: 'Obtenez des résumés et mots-clés de livres informatiques essentiels.',
+    title: 'Résumés de livres et de fichiers',
+    description: 'Obtenez des résumés IA de livres ou de vos propres documents (PDF, TXT).',
     icon: Library,
     link: '/book-summarizer',
-  },
-  {
-    title: 'Synthèse de Documents',
-    description: "Téléchargez vos documents de cours (PDF, TXT) et obtenez un résumé et les mots-clés générés par l'IA.",
-    icon: FileText,
-    link: '/summarizer',
   },
   {
     title: "Conseils d'examen",
@@ -57,3 +51,5 @@ export default function RevisionPage() {
     </div>
   );
 }
+
+    
