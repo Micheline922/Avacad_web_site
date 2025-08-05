@@ -21,7 +21,8 @@ import {
   HelpCircle,
   LogOut,
   GraduationCap,
-  Calculator
+  Calculator,
+  Timer
 } from 'lucide-react';
 import Header from './header';
 
@@ -35,6 +36,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     { href: '/exam-tips', label: "Conseils d'examen", icon: GraduationCap },
     { href: '/faq', label: 'FAQ IA', icon: HelpCircle },
     { href: '/calculator', label: 'Calculatrice', icon: Calculator },
+    { href: '/pomodoro', label: 'Pomodoro', icon: Timer },
   ];
 
   return (
