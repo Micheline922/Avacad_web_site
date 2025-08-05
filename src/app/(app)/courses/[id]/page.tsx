@@ -134,6 +134,42 @@ const mockCourses = {
       { id: '2', title: "Simulation d'un pipeline de processeur", dueDate: '2024-10-22', completed: false },
     ],
   },
+  fr101: {
+    title: "Français : Communication professionnelle",
+    notes: [
+        { title: "Chapitre 1 : Les bases de la communication écrite", content: "Ce chapitre couvre les fondamentaux de l'écriture professionnelle : clarté, concision, et ton adapté. Nous reverrons les règles de grammaire essentielles, la syntaxe et la ponctuation pour garantir des écrits sans erreurs. L'accent sera mis sur la rédaction d'e-mails professionnels efficaces." },
+        { title: "Chapitre 2 : Rédaction de documents techniques", content: "Apprenez à structurer et rédiger des documents techniques clairs. Ce module aborde les rapports d'incident, les spécifications fonctionnelles et la documentation utilisateur. Nous travaillerons sur la manière de vulgariser des concepts complexes pour un public non technique." },
+        { title: "Chapitre 3 : Prise de parole en public", content: "Développez votre aisance à l'oral. Ce chapitre est axé sur la structuration d'un discours, la gestion du trac, l'utilisation de supports visuels (diapositives) et les techniques pour capter et maintenir l'attention de votre auditoire lors de présentations techniques ou de réunions." }
+    ],
+    assignments: [
+      { id: '1', title: "Rédaction d'un e-mail de prise de contact", dueDate: '2024-11-05', completed: false },
+      { id: '2', title: "Préparation d'une présentation de 5 minutes", dueDate: '2024-11-19', completed: false },
+    ],
+  },
+  en202: {
+    title: "Anglais pour l'informatique",
+    notes: [
+        { title: "Chapter 1: Technical Vocabulary", content: "This chapter focuses on building a strong vocabulary for the IT field. We will cover key terms related to hardware, software, networking, cybersecurity, and software development. The goal is to understand and use technical terms accurately in context." },
+        { title: "Chapter 2: Reading Technical Documentation", content: "Learn how to efficiently read and understand technical documents such as API documentation, research papers, and official manuals. We will practice identifying main ideas, extracting specific information, and understanding complex technical descriptions." },
+        { title: "Chapter 3: Professional Communication in English", content: "This module covers writing professional emails, participating in technical meetings, and presenting project updates in English. We will focus on polite and clear communication, handling questions, and using appropriate business English etiquette for the tech industry." }
+    ],
+    assignments: [
+      { id: '1', title: "Summarize a technical article", dueDate: '2024-11-12', completed: false },
+      { id: '2', title: "Write a bug report email", dueDate: '2024-11-26', completed: false },
+    ],
+  },
+  math303: {
+    title: "Mathématiques pour l'ingénieur informaticien",
+    notes: [
+        { title: "Chapitre 1 : Algèbre linéaire", content: "L'algèbre linéaire est fondamentale pour l'informatique graphique, l'apprentissage automatique et bien plus encore. Ce chapitre couvre les vecteurs, les matrices, les opérations matricielles (addition, multiplication), les déterminants, et la résolution de systèmes d'équations linéaires." },
+        { title: "Chapitre 2 : Probabilités et statistiques", content: "Ce module introduit les concepts de base des probabilités et des statistiques, essentiels pour l'analyse de données et l'intelligence artificielle. Nous aborderons les probabilités conditionnelles, le théorème de Bayes, les variables aléatoires, les distributions de probabilité (normale, binomiale) et les tests d'hypothèses." },
+        { title: "Chapitre 3 : Logique et mathématiques discrètes", content: "Les mathématiques discrètes sont le fondement de l'informatique. Ce chapitre explore la logique propositionnelle, la théorie des ensembles, les relations, les fonctions, la théorie des graphes et les techniques de comptage. Ces concepts sont cruciaux pour la conception d'algorithmes et la vérification de programmes." }
+    ],
+    assignments: [
+      { id: '1', title: "Exercices sur les opérations matricielles", dueDate: '2024-11-15', completed: false },
+      { id: '2', title: "Application du théorème de Bayes", dueDate: '2024-11-29', completed: false },
+    ],
+  },
 };
 
 type Assignment = { id: string; title: string; dueDate: string; completed: boolean; };
@@ -241,3 +277,5 @@ export default function CourseDetailPage() {
     </Card>
   );
 }
+
+    

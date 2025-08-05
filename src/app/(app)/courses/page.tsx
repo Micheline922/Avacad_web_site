@@ -61,6 +61,24 @@ const courses = [
     description: "Étude de la conception et de l'organisation des systèmes informatiques.",
     progress: 30,
   },
+  {
+    id: 'fr101',
+    title: "Français : Communication professionnelle",
+    description: "Maîtrisez la communication écrite et orale dans un contexte professionnel.",
+    progress: 15,
+  },
+  {
+    id: 'en202',
+    title: "Anglais pour l'informatique",
+    description: "Améliorez votre anglais technique pour la documentation et la communication.",
+    progress: 45,
+  },
+  {
+    id: 'math303',
+    title: "Mathématiques pour l'ingénieur informaticien",
+    description: "Algèbre linéaire, probabilités et logique pour l'informatique.",
+    progress: 20,
+  },
 ];
 
 export default function CoursesPage() {
@@ -90,3 +108,5 @@ export default function CoursesPage() {
     </div>
   );
 }
+
+    
