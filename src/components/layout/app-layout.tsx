@@ -33,7 +33,6 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const menuItems = [
     { href: '/dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
     { href: '/courses', label: 'Cours', icon: BookOpen },
-    { href: '/book-summarizer', label: 'Résumés IA', icon: Library },
     { href: '/exam-tips', label: "Conseils d'examen", icon: GraduationCap },
     { href: '/faq', label: 'FAQ IA', icon: HelpCircle },
   ];
