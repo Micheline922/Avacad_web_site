@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
@@ -60,6 +61,24 @@ const courses = [
     description: "Étude de la conception et de l'organisation des systèmes informatiques.",
     progress: 30,
   },
+  {
+    id: 'fr_ing_info',
+    title: "Français pour l'ingénieur informaticien",
+    description: "Améliorez vos compétences en communication professionnelle et technique.",
+    progress: 15,
+  },
+  {
+    id: 'en_ing_info',
+    title: "Anglais pour l'ingénieur informaticien",
+    description: "Maîtrisez le vocabulaire technique et la documentation en anglais.",
+    progress: 45,
+  },
+  {
+    id: 'math_ing_info',
+    title: "Mathématiques pour l'ingénieur informaticien",
+    description: "Les outils mathématiques essentiels pour l'informatique.",
+    progress: 20,
+  },
 ];
 
 export default function CoursesPage() {
@@ -79,7 +98,7 @@ export default function CoursesPage() {
           </CardContent>
           <CardFooter>
             <Button asChild className="w-full">
-              <Link href={`/courses/${course.id}?tab=tutor`}>
+              <Link href={`/courses/${course.id}`}>
                 Voir le cours <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -89,3 +108,5 @@ export default function CoursesPage() {
     </div>
   );
 }
+
+    
