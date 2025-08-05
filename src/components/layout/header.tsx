@@ -3,7 +3,6 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import LanguageSwitcher from './language-switcher';
 
 const getTitleFromPathname = (pathname: string) => {
   if (pathname.includes('/dashboard')) return 'Tableau de bord';
@@ -30,7 +29,7 @@ const Header = () => {
                 </h1>
             </div>
             <div className="flex items-center gap-4">
-                <LanguageSwitcher />
+                
             </div>
         </header>
     );
