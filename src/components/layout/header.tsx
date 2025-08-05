@@ -10,6 +10,7 @@ const getTitleFromPathname = (pathname: string) => {
   if (pathname.includes('/courses')) return 'Mes Cours';
   if (pathname.includes('/faq')) return 'FAQ IA';
   if (pathname.includes('/exam-tips')) return "Conseils d'examen";
+  if (pathname.includes('/calculator')) return 'Calculatrice';
   return "L'Avantage Académique de Milionne";
 }
 

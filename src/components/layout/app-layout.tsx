@@ -18,11 +18,10 @@ import {
 import {
   LayoutDashboard,
   BookOpen,
-  BrainCircuit,
   HelpCircle,
   LogOut,
   GraduationCap,
-  Library
+  Calculator
 } from 'lucide-react';
 import Header from './header';
 
@@ -35,6 +34,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     { href: '/courses', label: 'Cours', icon: BookOpen },
     { href: '/exam-tips', label: "Conseils d'examen", icon: GraduationCap },
     { href: '/faq', label: 'FAQ IA', icon: HelpCircle },
+    { href: '/calculator', label: 'Calculatrice', icon: Calculator },
   ];
 
   return (
