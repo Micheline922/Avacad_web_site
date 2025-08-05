@@ -20,7 +20,9 @@ import {
   BookOpen,
   BrainCircuit,
   HelpCircle,
-  LogOut
+  LogOut,
+  GraduationCap,
+  Library
 } from 'lucide-react';
 import Header from './header';
 
@@ -31,7 +33,8 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const menuItems = [
     { href: '/dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
     { href: '/courses', label: 'Cours', icon: BookOpen },
-    { href: '/revision', label: 'Zone de révision', icon: BrainCircuit },
+    { href: '/book-summarizer', label: 'Résumés IA', icon: Library },
+    { href: '/exam-tips', label: "Conseils d'examen", icon: GraduationCap },
     { href: '/faq', label: 'FAQ IA', icon: HelpCircle },
   ];
 
