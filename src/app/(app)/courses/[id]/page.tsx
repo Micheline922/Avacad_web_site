@@ -134,48 +134,6 @@ const mockCourses = {
       { id: '2', title: "Simulation d'un pipeline de processeur", dueDate: '2024-10-22', completed: false },
     ],
   },
-  fr_ing_info: {
-    title: "Français pour l'ingénieur informaticien",
-    notes: [
-      { title: "Chapitre 1 : Communication professionnelle écrite", content: "Maîtriser la rédaction d'e-mails, de comptes rendus et de documentation professionnelle. L'accent est mis sur la clarté, la concision et l'adaptation au destinataire." },
-      { title: "Chapitre 2 : Rédaction de rapports techniques", content: "Apprendre à structurer et rédiger des rapports techniques clairs et rigoureux, incluant des sections comme l'introduction, la méthodologie, les résultats et la conclusion." },
-      { title: "Chapitre 3 : Présentations orales efficaces", content: "Développer des compétences pour présenter un projet technique de manière convaincante : structurer son discours, concevoir des supports visuels pertinents et gérer le temps de parole." },
-      { title: "Chapitre 4 : Vocabulaire de l'informatique en français", content: "Enrichir son lexique avec les termes techniques normalisés en français pour décrire des concepts, des technologies et des processus informatiques." }
-    ],
-    assignments: [
-      { id: '1', title: "Rédaction d'un e-mail professionnel", dueDate: '2024-11-05', completed: false },
-      { id: '2', title: "Préparation d'un rapport d'incident", dueDate: '2024-11-19', completed: false },
-      { id: '3', title: "Présentation d'un projet technique", dueDate: '2024-12-03', completed: false },
-    ],
-  },
-  en_ing_info: {
-    title: "Anglais pour l'ingénieur informaticien",
-    notes: [
-      { title: "Chapter 1: Technical Vocabulary and IT Jargon", content: "Building a strong vocabulary for technical discussions, including common acronyms, hardware/software terms, and industry-specific jargon." },
-      { title: "Chapter 2: Writing Technical Documentation", content: "Learning to write clear and concise technical documents such as API documentation, user manuals, and tutorials for an international audience." },
-      { title: "Chapter 3: Participating in Technical Meetings", content: "Developing skills for effective communication in meetings, including expressing opinions, asking for clarification, and presenting technical updates." },
-      { title: "Chapter 4: Reading and Understanding Research Papers", content: "Strategies for reading, understanding, and summarizing academic and technical papers in the field of computer science." }
-    ],
-    assignments: [
-      { id: '1', title: "Write a technical blog post", dueDate: '2024-11-10', completed: false },
-      { id: '2', title: "Prepare a presentation on a new technology", dueDate: '2024-11-24', completed: false },
-      { id: '3', title: "Summarize a technical article", dueDate: '2024-12-08', completed: false },
-    ],
-  },
-  math_ing_info: {
-    title: "Mathématiques pour l'ingénieur informaticien",
-    notes: [
-      { title: "Chapitre 1 : Logique et théorie des ensembles", content: "Fondements de la logique propositionnelle et des prédicats, raisonnement par récurrence, et théorie des ensembles. Essentiel pour l'algorithmique et les bases de données." },
-      { title: "Chapitre 2 : Algèbre linéaire", content: "Étude des espaces vectoriels, des matrices, des déterminants et des transformations linéaires. Crucial pour l'infographie, l'apprentissage automatique et la cryptographie." },
-      { title: "Chapitre 3 : Probabilités et statistiques", content: "Introduction aux probabilités discrètes et continues, aux variables aléatoires et aux tests d'hypothèses. Utilisé en intelligence artificielle, en analyse de données et en théorie de l'information." },
-      { title: "Chapitre 4 : Graphes et algorithmes de graphes", content: "Théorie des graphes, représentation, parcours (BFS, DFS), et algorithmes fondamentaux comme Dijkstra et Kruskal. Au cœur des réseaux, de la logistique et de la modélisation." }
-    ],
-    assignments: [
-      { id: '1', title: "Résolution de problèmes de logique", dueDate: '2024-11-12', completed: false },
-      { id: '2', title: "Exercices sur les matrices", dueDate: '2024-11-26', completed: false },
-      { id: '3', title: "Analyse statistique d'un jeu de données", dueDate: '2024-12-10', completed: false },
-    ],
-  },
 };
 
 type Assignment = { id: string; title: string; dueDate: string; completed: boolean; };
@@ -283,5 +241,3 @@ export default function CourseDetailPage() {
     </Card>
   );
 }
-
-    

@@ -61,24 +61,6 @@ const courses = [
     description: "Étude de la conception et de l'organisation des systèmes informatiques.",
     progress: 30,
   },
-  {
-    id: 'fr_ing_info',
-    title: "Français pour l'ingénieur informaticien",
-    description: "Améliorez vos compétences en communication professionnelle et technique.",
-    progress: 15,
-  },
-  {
-    id: 'en_ing_info',
-    title: "Anglais pour l'ingénieur informaticien",
-    description: "Maîtrisez le vocabulaire technique et la documentation en anglais.",
-    progress: 45,
-  },
-  {
-    id: 'math_ing_info',
-    title: "Mathématiques pour l'ingénieur informaticien",
-    description: "Les outils mathématiques essentiels pour l'informatique.",
-    progress: 20,
-  },
 ];
 
 export default function CoursesPage() {
@@ -108,5 +90,3 @@ export default function CoursesPage() {
     </div>
   );
 }
-
-    
