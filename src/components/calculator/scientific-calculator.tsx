@@ -16,39 +16,43 @@ const ScientificCalculator: React.FC = () => {
             setExpression('');
         } else if (value === 'C') {
             setDisplay(display.slice(0, -1) || '0');
+            setExpression(expression.slice(0, -1) || '');
         } else if (value === '=') {
             try {
+                // Sanitize and evaluate expression
                 // Replace ^ with ** for exponentiation
-                const evalExpression = expression.replace(/\^/g, '**');
+                let evalExpression = expression.replace(/\^/g, '**');
+                
+                // Handle trigonometric functions (assuming degrees)
+                evalExpression = evalExpression.replace(/(sin|cos|tan)\(([^)]+)\)/g, (match, func, angle) => {
+                    const angleValue = eval(angle);
+                    const radians = angleValue * (Math.PI / 180);
+                    return `Math.${func}(${radians})`;
+                });
+
+                // Handle square root
+                evalExpression = evalExpression.replace(/sqrt\(([^)]+)\)/g, (match, num) => {
+                    return `Math.sqrt(${eval(num)})`;
+                });
+
+                // eslint-disable-next-line no-eval
                 const result = eval(evalExpression);
                 setDisplay(String(result));
                 setExpression(String(result));
             } catch (error) {
-                setDisplay('Error');
+                setDisplay('Erreur');
                 setExpression('');
             }
-        } else if (value === 'sqrt') {
-            try {
-                const result = Math.sqrt(eval(expression));
-                setDisplay(String(result));
-                setExpression(String(result));
-            } catch {
-                setDisplay('Error');
-                setExpression('');
+        } else if (value === 'sin' || value === 'cos' || value === 'tan' || value === 'sqrt') {
+            if (display === '0' || display === 'Erreur') {
+                setDisplay(`${value}(`);
+                setExpression(`${value}(`);
+            } else {
+                setDisplay(`${display}${value}(`);
+                setExpression(`${expression}${value}(`);
             }
-        } else if (value === 'sin' || value === 'cos' || value === 'tan') {
-             try {
-                const radians = eval(expression) * (Math.PI / 180);
-                const result = Math[value](radians);
-                setDisplay(String(result));
-                setExpression(String(result));
-            } catch {
-                setDisplay('Error');
-                setExpression('');
-            }
-        }
-        else {
-            if (display === '0' || display === 'Error') {
+        } else {
+            if (display === '0' || display === 'Erreur') {
                 setDisplay(value);
                 setExpression(value);
             } else {
@@ -60,11 +64,11 @@ const ScientificCalculator: React.FC = () => {
 
     const buttons = [
         ['sin', 'cos', 'tan', 'C'],
-        ['7', '8', '9', '/'],
-        ['4', '5', '6', '*'],
-        ['1', '2', '3', '-'],
-        ['0', '.', '^', '+'],
-        ['sqrt', '(', ')', '='],
+        ['(', ')', '^', '/'],
+        ['7', '8', '9', '*'],
+        ['4', '5', '6', '-'],
+        ['1', '2', '3', '+'],
+        ['0', '.', 'sqrt', '='],
     ];
 
     return (
