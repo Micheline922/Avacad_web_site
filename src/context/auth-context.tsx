@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -47,7 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error("Could not access localStorage:", error);
     }
-    router.push('/login');
+    router.push('/');
   };
 
   return (

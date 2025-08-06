@@ -1,7 +1,15 @@
+
+"use client";
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { FileText, BrainCircuit, BookOpen, Lightbulb, LogIn, ArrowRight } from 'lucide-react';
+import { useAuth } from '@/context/auth-context';
+import { useToast } from '@/hooks/use-toast';
 
 const Logo = () => (
     <div className="flex items-center gap-2">
@@ -52,6 +60,50 @@ const featuredCourses = [
     },
 ];
 
+const LoginForm = () => {
+    const { login } = useAuth();
+    const { toast } = useToast();
+
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault();
+        toast({
+            title: 'Connexion réussie',
+            description: 'Bienvenue sur Avacad! Redirection en cours...',
+        });
+        login();
+    };
+
+    return (
+        <form onSubmit={handleLogin}>
+            <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="name" className="text-right">
+                        Nom
+                    </Label>
+                    <Input id="name" defaultValue="John Doe" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="email" className="text-right">
+                        Email
+                    </Label>
+                    <Input id="email" type="email" defaultValue="john.doe@example.com" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="password" className="text-right">
+                        Mot de passe
+                    </Label>
+                    <Input id="password" type="password" defaultValue="********" className="col-span-3" />
+                </div>
+            </div>
+            <div className="flex justify-end">
+                <Button type="submit">
+                    Se connecter
+                </Button>
+            </div>
+        </form>
+    )
+}
+
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -61,11 +113,22 @@ export default function LandingPage() {
                 <Logo />
             </Link>
           <nav className="flex items-center gap-4">
-             <Button asChild>
-                <Link href="/dashboard">
-                    Tableau de Bord <LogIn className="ml-2" />
-                </Link>
-            </Button>
+             <Dialog>
+                <DialogTrigger asChild>
+                    <Button>
+                        Se connecter <LogIn className="ml-2" />
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                    <DialogTitle>Connexion</DialogTitle>
+                    <DialogDescription>
+                        Entrez vos identifiants pour accéder à votre tableau de bord.
+                    </DialogDescription>
+                    </DialogHeader>
+                    <LoginForm />
+                </DialogContent>
+            </Dialog>
           </nav>
         </div>
       </header>
@@ -80,7 +143,7 @@ export default function LandingPage() {
                     Un outil innovant conçu pour stimuler votre réussite scolaire. Il vous accompagne dans vos révisions, vous aide à organiser vos idées, et simplifie l’accès aux ressources essentielles pour apprendre efficacement.
                 </p>
                  <Button size="lg" className="mt-8" asChild>
-                    <Link href="/dashboard">
+                    <Link href="/login">
                         Commencer Maintenant
                     </Link>
                 </Button>
