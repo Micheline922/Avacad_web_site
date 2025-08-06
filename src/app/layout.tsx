@@ -19,7 +19,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "L'Avantage Académique de Milionne",
+  title: 'Avacad : Votre Assistant Académique',
   description: "Votre assistant académique personnel alimenté par l'IA.",
 };
 

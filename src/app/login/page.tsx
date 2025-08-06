@@ -14,7 +14,7 @@ export default function LoginPage() {
     if (!isAuthLoading) {
       toast({
           title: 'Connexion réussie',
-          description: 'Bienvenue, Milionne! Redirection en cours...',
+          description: 'Bienvenue sur Avacad! Redirection en cours...',
       });
       login();
     }
