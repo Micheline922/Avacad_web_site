@@ -1,5 +1,1 @@
-# Firebase Studio
-
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+Ce site web Avacad a été conçu depuis firebase studio pour aider les étudiants surtout ceux de l'informatique à mieux réviser leurs cours en leur offrant des livres contenant des chapitres importants et un accès à l'IA pour la resolution des multiples difficultés rencontrées dans n'importe quel cours.
