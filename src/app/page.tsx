@@ -159,7 +159,6 @@ export default function LandingPage() {
       <footer className="py-6 border-t">
         <div className="container text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} L'Avantage Académique de Milionne. Tous droits réservés.</p>
-          <a href="https://milionne.firebase.com" className="text-sm hover:underline">https://milionne.firebase.com</a>
         </div>
       </footer>
     </div>

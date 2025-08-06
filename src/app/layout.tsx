@@ -19,7 +19,6 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://milionne.firebase.com'),
   title: "L'Avantage Académique de Milionne",
   description: "Votre assistant académique personnel alimenté par l'IA.",
 };
