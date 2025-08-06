@@ -30,9 +30,15 @@ const MotivationHub = () => {
     const [weeklyGoals, setWeeklyGoals] = useState<Goal[]>(initialWeeklyGoals);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [tempGoals, setTempGoals] = useState<Goal[]>([]);
-    const [date, setDate] = useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(undefined);
+    const [isSaturday, setIsSaturday] = useState(false);
 
-    const isSaturday = date?.getDay() === 6;
+    useEffect(() => {
+        const today = new Date();
+        setDate(today);
+        setIsSaturday(today.getDay() === 6);
+    }, []);
+
 
     const handleGoalChange = (index: number, newLabel: string) => {
         const updatedGoals = [...tempGoals];
@@ -127,14 +133,14 @@ const MotivationHub = () => {
                         <CardTitle className="font-headline">Calendrier</CardTitle>
                     </CardHeader>
                     <CardContent className="flex justify-center">
-                        <Calendar
+                       {date && <Calendar
                             mode="single"
                             selected={date}
                             onSelect={setDate}
                             locale={fr}
                             className="rounded-md"
                             numberOfMonths={1}
-                        />
+                        />}
                     </CardContent>
                 </Card>
 
