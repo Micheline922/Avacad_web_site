@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Target, CheckCircle, Edit, Rocket, BookOpen, BrainCircuit } from 'lucide-react';
+import { Target, CheckCircle, Edit, Rocket, BookOpen, BrainCircuit, Lightbulb } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -228,8 +228,10 @@ const MotivationHub = () => {
                             />}
                         </CardContent>
                     </Card>
+                </div>
 
-                    <Card>
+                <div className="lg:col-span-3 grid gap-8 md:grid-cols-2">
+                     <Card>
                         <CardHeader>
                              <div className="flex justify-between items-start">
                                 <div>
@@ -283,6 +285,17 @@ const MotivationHub = () => {
                                     </label>
                                 </div>
                             ))}
+                        </CardContent>
+                    </Card>
+                     <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg flex flex-col">
+                        <CardHeader>
+                            <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Citation du jour</CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex flex-col flex-grow justify-center">
+                            <blockquote className="text-xl italic">
+                                "La connaissance s'acquiert par l'expérience, tout le reste n'est que de l'information."
+                            </blockquote>
+                            <p className="text-right mt-2 opacity-80">- Albert Einstein</p>
                         </CardContent>
                     </Card>
                 </div>
