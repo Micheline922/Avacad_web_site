@@ -195,13 +195,24 @@ const DueDateBadge = ({ dueDate }: { dueDate: string }) => {
 export default function CourseDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
-  const courseId = params.id as keyof typeof mockCourses;
-  const course = mockCourses[courseId] || { title: 'Cours non trouvé', notes: [], assignments: [] };
-  
+  const courseId = params.id as string;
+  const course = courseId ? (mockCourses as any)[courseId] : null;
+
+  if (!course) {
+    return (
+        <Card>
+            <CardHeader>
+                <CardTitle className="font-headline text-3xl">Cours non trouvé</CardTitle>
+                <CardDescription>Désolé, nous n'avons pas pu trouver les détails pour ce cours.</CardDescription>
+            </CardHeader>
+        </Card>
+    );
+  }
+
   const tab = searchParams.get('tab');
   const defaultTab = tab === 'tutor' || tab === 'conclusion' || tab === 'pomodoro' ? tab : 'notes';
 
-  const fullCourseContentForAI = Array.isArray(course.notes) ? course.notes.map(c => `Chapitre: ${c.title}\nContenu: ${c.content}`).join('\n\n') : '';
+  const fullCourseContentForAI = Array.isArray(course.notes) ? course.notes.map((c: Chapter) => `Chapitre: ${c.title}\nContenu: ${c.content}`).join('\n\n') : '';
 
 
   return (
@@ -228,7 +239,7 @@ export default function CourseDetailPage() {
                 <CardContent>
                     <ScrollArea className="h-96 pr-4">
                        <Accordion type="single" collapsible className="w-full">
-                        {Array.isArray(course.notes) && course.notes.map((chapter, index) => (
+                        {Array.isArray(course.notes) && course.notes.map((chapter: Chapter, index: number) => (
                           <AccordionItem value={`item-${index}`} key={index}>
                             <AccordionTrigger className="font-headline text-lg hover:no-underline">{chapter.title}</AccordionTrigger>
                             <AccordionContent>
@@ -299,5 +310,3 @@ export default function CourseDetailPage() {
     </Card>
   );
 }
-
-    
