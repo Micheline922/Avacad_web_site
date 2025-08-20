@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -31,12 +30,10 @@ const MotivationHub = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [tempGoals, setTempGoals] = useState<Goal[]>([]);
     const [date, setDate] = useState<Date | undefined>(undefined);
-    const [isSaturday, setIsSaturday] = useState(false);
 
     useEffect(() => {
-        const today = new Date();
-        setDate(today);
-        setIsSaturday(today.getDay() === 6);
+        // This logic now runs only on the client-side, after hydration
+        setDate(new Date());
     }, []);
 
 
@@ -79,7 +76,7 @@ const MotivationHub = () => {
                         </div>
                         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button variant="outline" size="sm" disabled={!isSaturday} onClick={openEditDialog}>
+                                <Button variant="outline" size="sm" onClick={openEditDialog}>
                                     <Edit className="mr-2 h-4 w-4" />
                                     Modifier
                                 </Button>
