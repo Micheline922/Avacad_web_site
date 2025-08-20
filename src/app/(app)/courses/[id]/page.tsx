@@ -210,7 +210,7 @@ export default function CourseDetailPage() {
         <CardTitle className="font-headline text-3xl">{course.title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue={defaultTab} className="w-full">
+        <Tabs defaultValue="notes" value={defaultTab} className="w-full">
           <TabsList>
             <TabsTrigger value="notes">Notes</TabsTrigger>
             <TabsTrigger value="assignments">Devoirs</TabsTrigger>
@@ -299,3 +299,5 @@ export default function CourseDetailPage() {
     </Card>
   );
 }
+
+    
