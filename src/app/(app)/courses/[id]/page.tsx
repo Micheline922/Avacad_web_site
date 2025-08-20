@@ -277,3 +277,5 @@ export default function CourseDetailPage() {
     </Card>
   );
 }
+
+    
