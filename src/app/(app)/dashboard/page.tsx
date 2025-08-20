@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -25,45 +26,59 @@ const initialWeeklyGoals: Goal[] = [
     { id: 'goal6', label: "Participer au groupe d'étude de Droit Civil", completed: false },
 ];
 
+const initialDailyProgress: Goal[] = [
+    { id: 'check1', label: 'Terminer le défi de codage quotidien', completed: true },
+    { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
+    { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
+];
+
 const MotivationHub = () => {
     const [weeklyGoals, setWeeklyGoals] = useState<Goal[]>(initialWeeklyGoals);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [tempGoals, setTempGoals] = useState<Goal[]>([]);
+    const [dailyProgress, setDailyProgress] = useState<Goal[]>(initialDailyProgress);
+    
+    const [isWeeklyGoalsDialogOpen, setIsWeeklyGoalsDialogOpen] = useState(false);
+    const [isDailyProgressDialogOpen, setIsDailyProgressDialogOpen] = useState(false);
+    
+    const [tempWeeklyGoals, setTempWeeklyGoals] = useState<Goal[]>([]);
+    const [tempDailyProgress, setTempDailyProgress] = useState<Goal[]>([]);
+
     const [date, setDate] = useState<Date | undefined>(undefined);
 
     useEffect(() => {
-        // This logic now runs only on the client-side, after hydration
         setDate(new Date());
     }, []);
 
-
-    const handleGoalChange = (index: number, newLabel: string) => {
-        const updatedGoals = [...tempGoals];
+    const handleGoalChange = (goals: Goal[], setGoals: React.Dispatch<React.SetStateAction<Goal[]>>, index: number, newLabel: string) => {
+        const updatedGoals = [...goals];
         updatedGoals[index].label = newLabel;
-        setTempGoals(updatedGoals);
+        setGoals(updatedGoals);
     };
     
-    const handleGoalCompletion = (goalId: string) => {
-      setWeeklyGoals(weeklyGoals.map(goal => 
+    const handleCompletionChange = (goals: Goal[], setGoals: React.Dispatch<React.SetStateAction<Goal[]>>, goalId: string) => {
+      setGoals(goals.map(goal => 
         goal.id === goalId ? { ...goal, completed: !goal.completed } : goal
       ));
     };
 
-    const openEditDialog = () => {
-        setTempGoals([...weeklyGoals]);
-        setIsDialogOpen(true);
+    const openEditDialog = (type: 'weekly' | 'daily') => {
+        if (type === 'weekly') {
+            setTempWeeklyGoals([...weeklyGoals]);
+            setIsWeeklyGoalsDialogOpen(true);
+        } else {
+            setTempDailyProgress([...dailyProgress]);
+            setIsDailyProgressDialogOpen(true);
+        }
     };
 
-    const saveGoals = () => {
-        setWeeklyGoals(tempGoals);
-        setIsDialogOpen(false);
+    const saveGoals = (type: 'weekly' | 'daily') => {
+        if (type === 'weekly') {
+            setWeeklyGoals(tempWeeklyGoals);
+            setIsWeeklyGoalsDialogOpen(false);
+        } else {
+            setDailyProgress(tempDailyProgress);
+            setIsDailyProgressDialogOpen(false);
+        }
     };
-
-    const progressChecklist = [
-        { id: 'check1', label: 'Terminer le défi de codage quotidien', completed: true },
-        { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
-        { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
-    ];
     
     return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -74,9 +89,9 @@ const MotivationHub = () => {
                             <CardTitle className="font-headline flex items-center gap-2"><Target />Objectifs de la semaine</CardTitle>
                             <CardDescription>Restez sur la bonne voie avec vos objectifs pour cette semaine.</CardDescription>
                         </div>
-                        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                        <Dialog open={isWeeklyGoalsDialogOpen} onOpenChange={setIsWeeklyGoalsDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button variant="outline" size="sm" onClick={openEditDialog}>
+                                <Button variant="outline" size="sm" onClick={() => openEditDialog('weekly')}>
                                     <Edit className="mr-2 h-4 w-4" />
                                     Modifier
                                 </Button>
@@ -89,17 +104,17 @@ const MotivationHub = () => {
                                     </DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4 py-4">
-                                    {tempGoals.map((goal, index) => (
+                                    {tempWeeklyGoals.map((goal, index) => (
                                         <Input
                                             key={goal.id}
                                             value={goal.label}
-                                            onChange={(e) => handleGoalChange(index, e.target.value)}
+                                            onChange={(e) => handleGoalChange(tempWeeklyGoals, setTempWeeklyGoals, index, e.target.value)}
                                         />
                                     ))}
                                 </div>
                                 <DialogFooter>
-                                    <Button variant="secondary" onClick={() => setIsDialogOpen(false)}>Annuler</Button>
-                                    <Button onClick={saveGoals}>Sauvegarder</Button>
+                                    <Button variant="secondary" onClick={() => setIsWeeklyGoalsDialogOpen(false)}>Annuler</Button>
+                                    <Button onClick={() => saveGoals('weekly')}>Sauvegarder</Button>
                                 </DialogFooter>
                             </DialogContent>
                         </Dialog>
@@ -111,11 +126,11 @@ const MotivationHub = () => {
                             <Checkbox 
                                 id={goal.id} 
                                 checked={goal.completed} 
-                                onCheckedChange={() => handleGoalCompletion(goal.id)}
+                                onCheckedChange={() => handleCompletionChange(weeklyGoals, setWeeklyGoals, goal.id)}
                             />
                             <label
                                 htmlFor={goal.id}
-                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'text-muted-foreground' : ''}`}
+                                className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${goal.completed ? 'line-through text-muted-foreground' : ''}`}
                             >
                                 {goal.label}
                             </label>
@@ -143,16 +158,53 @@ const MotivationHub = () => {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle className="font-headline flex items-center gap-2"><CheckCircle />Progrès quotidiens</CardTitle>
-                        <CardDescription>Les petits pas mènent à de grandes réalisations.</CardDescription>
+                         <div className="flex justify-between items-start">
+                            <div>
+                                <CardTitle className="font-headline flex items-center gap-2"><CheckCircle />Progrès quotidiens</CardTitle>
+                                <CardDescription>Les petits pas mènent à de grandes réalisations.</CardDescription>
+                            </div>
+                             <Dialog open={isDailyProgressDialogOpen} onOpenChange={setIsDailyProgressDialogOpen}>
+                                <DialogTrigger asChild>
+                                    <Button variant="outline" size="sm" onClick={() => openEditDialog('daily')}>
+                                        <Edit className="mr-2 h-4 w-4" />
+                                        Modifier
+                                    </Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Modifier les progrès quotidiens</DialogTitle>
+                                        <DialogDescription>
+                                            Mettez à jour vos tâches pour aujourd'hui.
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="space-y-4 py-4">
+                                        {tempDailyProgress.map((goal, index) => (
+                                            <Input
+                                                key={goal.id}
+                                                value={goal.label}
+                                                onChange={(e) => handleGoalChange(tempDailyProgress, setTempDailyProgress, index, e.target.value)}
+                                            />
+                                        ))}
+                                    </div>
+                                    <DialogFooter>
+                                        <Button variant="secondary" onClick={() => setIsDailyProgressDialogOpen(false)}>Annuler</Button>
+                                        <Button onClick={() => saveGoals('daily')}>Sauvegarder</Button>
+                                    </DialogFooter>
+                                </DialogContent>
+                            </Dialog>
+                        </div>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                         {progressChecklist.map((item) => (
+                         {dailyProgress.map((item) => (
                             <div key={item.id} className="flex items-center space-x-3 p-3 rounded-md bg-background hover:bg-secondary transition-colors">
-                                <Checkbox id={item.id} defaultChecked={item.completed} />
+                                <Checkbox 
+                                    id={item.id} 
+                                    checked={item.completed} 
+                                    onCheckedChange={() => handleCompletionChange(dailyProgress, setDailyProgress, item.id)}
+                                />
                                 <label
                                     htmlFor={item.id}
-                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'text-muted-foreground' : ''}`}
+                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'line-through text-muted-foreground' : ''}`}
                                 >
                                     {item.label}
                                 </label>
