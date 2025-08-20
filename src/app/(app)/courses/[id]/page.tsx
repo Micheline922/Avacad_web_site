@@ -13,6 +13,8 @@ import { fr } from 'date-fns/locale';
 import ConclusionGenerator from '@/components/courses/conclusion-generator';
 import AiTutor from '@/components/courses/ai-tutor';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import PomodoroTimer from '@/components/pomodoro/pomodoro-timer';
+import { Timer } from 'lucide-react';
 
 const mockCourses = {
   cs101: {
@@ -197,7 +199,7 @@ export default function CourseDetailPage() {
   const course = mockCourses[courseId] || { title: 'Cours non trouvé', notes: [], assignments: [] };
   
   const tab = searchParams.get('tab');
-  const defaultTab = tab === 'tutor' || tab === 'conclusion' ? tab : 'notes';
+  const defaultTab = tab === 'tutor' || tab === 'conclusion' || tab === 'pomodoro' ? tab : 'notes';
 
   const fullCourseContentForAI = Array.isArray(course.notes) ? course.notes.map(c => `Chapitre: ${c.title}\nContenu: ${c.content}`).join('\n\n') : '';
 
@@ -214,6 +216,7 @@ export default function CourseDetailPage() {
             <TabsTrigger value="assignments">Devoirs</TabsTrigger>
             <TabsTrigger value="tutor">Tuteur IA</TabsTrigger>
             <TabsTrigger value="conclusion">Conclusion IA</TabsTrigger>
+            <TabsTrigger value="pomodoro">Pomodoro</TabsTrigger>
           </TabsList>
           
           <TabsContent value="notes" className="mt-4">
@@ -272,10 +275,27 @@ export default function CourseDetailPage() {
              <ConclusionGenerator courseName={course.title} initialContent={fullCourseContentForAI} />
           </TabsContent>
 
+          <TabsContent value="pomodoro" className="mt-4">
+            <Card>
+                <CardHeader>
+                    <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                            <Timer className="h-8 w-8" />
+                        </div>
+                        <div>
+                            <CardTitle className="font-headline text-3xl">Horloge Pomodoro</CardTitle>
+                            <CardDescription>Boostez votre productivité avec la technique Pomodoro pour ce cours.</CardDescription>
+                        </div>
+                    </div>
+                </CardHeader>
+                <CardContent>
+                    <PomodoroTimer />
+                </CardContent>
+            </Card>
+          </TabsContent>
+
         </Tabs>
       </CardContent>
     </Card>
   );
 }
-
-    
