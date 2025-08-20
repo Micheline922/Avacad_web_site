@@ -132,16 +132,14 @@ const MotivationHub = () => {
         if (!hasSeenTour) {
             setShowTour(true);
         }
+        
+        setDate(new Date());
     }, []);
 
     const handleTourComplete = () => {
         localStorage.setItem('hasSeenAvacadTour', 'true');
         setShowTour(false);
     };
-
-    useEffect(() => {
-        setDate(new Date());
-    }, []);
 
     const handleGoalChange = (goals: Goal[], setGoals: React.Dispatch<React.SetStateAction<Goal[]>>, index: number, newLabel: string) => {
         const updatedGoals = [...goals];
@@ -254,7 +252,7 @@ const MotivationHub = () => {
                     </Card>
                 </div>
 
-                <div className="lg:col-span-3 grid gap-8 md:grid-cols-2">
+                <div className="lg:col-span-3 grid gap-8 md:grid-cols-1">
                      <Card>
                         <CardHeader>
                              <div className="flex justify-between items-start">
