@@ -84,6 +84,19 @@ const mockCourses = {
       { id: '2', title: "Laboratoire sur la loi d'Ohm", dueDate: '2024-10-04', completed: false },
     ],
   },
+  elecnum201: {
+    title: "Électronique numérique",
+    notes: [
+        { title: "Chapitre 1 : Portes logiques et algèbre de Boole", content: "L'électronique numérique repose sur l'algèbre de Boole et les portes logiques (ET, OU, NON, NON-ET, etc.). Ces composants de base permettent de construire des circuits qui prennent des décisions binaires. L'algèbre de Boole fournit les outils mathématiques pour analyser et simplifier ces circuits." },
+        { title: "Chapitre 2 : Circuits combinatoires", content: "Les circuits combinatoires sont des circuits dont la sortie ne dépend que de l'état actuel des entrées. Ce chapitre couvre la conception de circuits comme les additionneurs, les décodeurs et les multiplexeurs, qui sont les briques de construction de composants plus complexes comme les processeurs." },
+        { title: "Chapitre 3 : Circuits séquentiels", content: "Contrairement aux circuits combinatoires, la sortie des circuits séquentiels dépend des entrées actuelles mais aussi des états précédents. Ce sont des circuits avec de la mémoire. Nous étudierons les bascules (flip-flops), les registres et les compteurs, qui sont essentiels pour stocker des informations et créer des machines à états." },
+        { title: "Chapitre 4 : Introduction aux microprocesseurs", content: "Ce chapitre explore l'architecture de base d'un microprocesseur, y compris l'unité de contrôle, l'ALU et les registres. Nous verrons comment un microprocesseur exécute un cycle d'instructions (fetch-decode-execute) pour exécuter des programmes, et comment il interagit avec la mémoire et les périphériques d'entrée/sortie." }
+    ],
+    assignments: [
+      { id: '1', title: "Simplification de fonctions booléennes", dueDate: '2024-10-20', completed: false },
+      { id: '2', title: "Conception d'un additionneur complet 4 bits", dueDate: '2024-11-04', completed: false },
+    ],
+  },
   droit201: {
     title: "Droit civil et législation sociale",
     notes: [

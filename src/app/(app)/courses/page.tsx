@@ -38,6 +38,12 @@ const courses = [
     progress: 60,
   },
   {
+    id: 'elecnum201',
+    title: "Électronique numérique",
+    description: "Les bases des circuits logiques, des microprocesseurs et de la conception de systèmes numériques.",
+    progress: 10,
+  },
+  {
     id: 'droit201',
     title: "Droit civil et législation sociale",
     description: "Introduction aux concepts du droit civil et de la législation sociale.",
@@ -108,5 +114,3 @@ export default function CoursesPage() {
     </div>
   );
 }
-
-    
