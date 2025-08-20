@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -194,7 +194,6 @@ const DueDateBadge = ({ dueDate }: { dueDate: string }) => {
 
 export default function CourseDetailPage() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const courseId = params.id as string;
   const course = courseId ? (mockCourses as any)[courseId] : null;
 
@@ -209,9 +208,6 @@ export default function CourseDetailPage() {
     );
   }
 
-  const tab = searchParams.get('tab');
-  const defaultTab = tab === 'tutor' || tab === 'conclusion' || tab === 'pomodoro' ? tab : 'notes';
-
   const fullCourseContentForAI = Array.isArray(course.notes) ? course.notes.map((c: Chapter) => `Chapitre: ${c.title}\nContenu: ${c.content}`).join('\n\n') : '';
 
 
@@ -221,7 +217,7 @@ export default function CourseDetailPage() {
         <CardTitle className="font-headline text-3xl">{course.title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="notes" value={defaultTab} className="w-full">
+        <Tabs defaultValue="notes" className="w-full">
           <TabsList>
             <TabsTrigger value="notes">Notes</TabsTrigger>
             <TabsTrigger value="assignments">Devoirs</TabsTrigger>
