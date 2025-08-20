@@ -4,12 +4,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Target, CheckCircle, Edit, Rocket, BookOpen, BrainCircuit, Lightbulb } from 'lucide-react';
+import { Target, CheckCircle, Edit, Rocket, BookOpen, BrainCircuit, Lightbulb, MessageSquareQuote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Calendar } from '@/components/ui/calendar';
 import { fr } from 'date-fns/locale';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 interface Goal {
     id: string;
@@ -30,6 +31,29 @@ const initialDailyProgress: Goal[] = [
     { id: 'check1', label: 'Terminer le défi de codage quotidien', completed: true },
     { id: 'check2', label: 'Lire un chapitre de "Clean Code"', completed: false },
     { id: 'check3', label: "Organiser le matériel d'étude", completed: true },
+];
+
+const motivationalQuotes = [
+  {
+    quote: "La connaissance s'acquiert par l'expérience, tout le reste n'est que de l'information.",
+    author: "Albert Einstein"
+  },
+  {
+    quote: "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
+    author: "Steve Jobs"
+  },
+  {
+    quote: "Le succès, c'est d'aller d'échec en échec sans perdre son enthousiasme.",
+    author: "Winston Churchill"
+  },
+  {
+    quote: "Croyez en vous et en tout ce que vous êtes. Sachez qu'il y a quelque chose à l'intérieur de vous qui est plus grand que n'importe quel obstacle.",
+    author: "Christian D. Larson"
+  },
+  {
+    quote: "N'attendez pas. Le temps ne sera jamais 'juste'. Commencez là où vous êtes, et travaillez avec les outils que vous avez à votre disposition.",
+    author: "Napoleon Hill"
+  }
 ];
 
 const tourSteps = [
@@ -287,15 +311,29 @@ const MotivationHub = () => {
                             ))}
                         </CardContent>
                     </Card>
-                     <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg flex flex-col">
+
+                    <Card>
                         <CardHeader>
-                            <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Citation du jour</CardTitle>
+                            <CardTitle className="font-headline text-2xl flex items-center gap-2"><MessageSquareQuote />Citations pour vous motiver</CardTitle>
+                             <CardDescription>Une dose d'inspiration pour vos sessions d'étude.</CardDescription>
                         </CardHeader>
-                        <CardContent className="flex flex-col flex-grow justify-center">
-                            <blockquote className="text-xl italic">
-                                "La connaissance s'acquiert par l'expérience, tout le reste n'est que de l'information."
-                            </blockquote>
-                            <p className="text-right mt-2 opacity-80">- Albert Einstein</p>
+                        <CardContent>
+                           <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                    <TableHead>Citation</TableHead>
+                                    <TableHead className="text-right">Auteur</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {motivationalQuotes.map((q, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell className="font-medium italic">"{q.quote}"</TableCell>
+                                        <TableCell className="text-right text-muted-foreground">{q.author}</TableCell>
+                                    </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
                         </CardContent>
                     </Card>
                 </div>
@@ -305,5 +343,3 @@ const MotivationHub = () => {
 };
 
 export default MotivationHub;
-
-    
