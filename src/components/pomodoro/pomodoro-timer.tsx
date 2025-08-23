@@ -1,63 +1,62 @@
+
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Play, Pause, RotateCcw } from 'lucide-react';
+import { usePomodoro } from '@/context/pomodoro-context';
 
 type Mode = 'work' | 'shortBreak' | 'longBreak';
 
-const PomodoroTimer: React.FC = () => {
-    const [mode, setMode] = useState<Mode>('work');
-    const [time, setTime] = useState(25 * 60);
-    const [isActive, setIsActive] = useState(false);
-    const [pomodoros, setPomodoros] = useState(0);
+interface PomodoroTimerProps {
+  courseId: string;
+}
 
-    const audioRef = useRef<HTMLAudioElement>(null);
-    
-    const times: Record<Mode, number> = {
-        work: 25 * 60,
-        shortBreak: 5 * 60,
-        longBreak: 15 * 60,
-    };
+const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ courseId }) => {
+    const { 
+      time, 
+      mode, 
+      isActive, 
+      pomodoros,
+      times,
+      toggleTimer, 
+      resetTimer,
+      switchMode,
+      startTimerForCourse
+    } = usePomodoro();
+
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        let interval: NodeJS.Timeout | null = null;
-        if (isActive && time > 0) {
-            interval = setInterval(() => {
-                setTime(t => t - 1);
-            }, 1000);
-        } else if (time === 0) {
-            if (audioRef.current) {
-                audioRef.current.play();
-            }
-            if (mode === 'work') {
-                const newPomodoros = pomodoros + 1;
-                setPomodoros(newPomodoros);
-                switchMode(newPomodoros % 4 === 0 ? 'longBreak' : 'shortBreak');
-            } else {
-                switchMode('work');
-            }
+        // This ensures the audio object is available on the client
+        if (!audioRef.current) {
+            audioRef.current = new Audio('/notification.mp3');
+            audioRef.current.preload = 'auto';
         }
-        return () => {
-            if (interval) clearInterval(interval);
-        };
-    }, [isActive, time]);
+    }, []);
+
+    useEffect(() => {
+      startTimerForCourse(courseId);
+    }, [courseId, startTimerForCourse]);
+
+    useEffect(() => {
+      if (time === 0 && isActive) {
+        audioRef.current?.play().catch(e => console.error("Error playing audio:", e));
+      }
+    }, [time, isActive]);
+
+    const handleToggle = () => {
+        toggleTimer(courseId);
+    };
     
-    const switchMode = (newMode: Mode) => {
-        setIsActive(false);
-        setMode(newMode);
-        setTime(times[newMode]);
+    const handleReset = () => {
+        resetTimer(courseId);
     };
 
-    const toggleTimer = () => {
-        setIsActive(!isActive);
-    };
-
-    const resetTimer = () => {
-        setIsActive(false);
-        setTime(times[mode]);
-    };
+    const handleSwitchMode = (newMode: Mode) => {
+        switchMode(newMode, courseId);
+    }
 
     const formatTime = (seconds: number) => {
         const mins = Math.floor(seconds / 60);
@@ -67,7 +66,7 @@ const PomodoroTimer: React.FC = () => {
 
     return (
         <div className="bg-background p-6 rounded-lg border flex flex-col items-center">
-            <Tabs defaultValue="work" value={mode} onValueChange={(value) => switchMode(value as Mode)} className="mb-8">
+            <Tabs defaultValue="work" value={mode} onValueChange={(value) => handleSwitchMode(value as Mode)} className="mb-8">
                 <TabsList>
                     <TabsTrigger value="work">Travail</TabsTrigger>
                     <TabsTrigger value="shortBreak">Pause Courte</TabsTrigger>
@@ -96,18 +95,17 @@ const PomodoroTimer: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-4">
-                <Button onClick={toggleTimer} size="lg" className="w-32">
+                <Button onClick={handleToggle} size="lg" className="w-32">
                     {isActive ? <Pause className="mr-2" /> : <Play className="mr-2" />}
                     {isActive ? 'Pause' : 'Démarrer'}
                 </Button>
-                <Button onClick={resetTimer} variant="outline" size="lg" className="p-3">
+                <Button onClick={handleReset} variant="outline" size="lg" className="p-3">
                     <RotateCcw />
                 </Button>
             </div>
             
             <p className="text-muted-foreground mt-6 text-sm">Cycles terminés : {pomodoros}</p>
 
-            <audio ref={audioRef} src="/notification.mp3" preload="auto" />
         </div>
     );
 };
