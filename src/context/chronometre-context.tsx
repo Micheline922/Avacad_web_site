@@ -54,6 +54,13 @@ export function ChronometreProvider({ children }: { children: ReactNode }) {
         }, 1000);
     }, [stopInterval]);
 
+    const switchMode = useCallback((newMode: Mode, courseId: string) => {
+        setIsActive(false);
+        setMode(newMode);
+        setTime(times[newMode]);
+        setActiveCourseId(courseId);
+    }, [times]);
+
     useEffect(() => {
         if (isActive) {
             startInterval();
@@ -75,14 +82,6 @@ export function ChronometreProvider({ children }: { children: ReactNode }) {
             }
         }
     }, [time, activeCourseId, mode, pomodoros, addStudyTime, times.work, switchMode]);
-
-
-    const switchMode = useCallback((newMode: Mode, courseId: string) => {
-        setIsActive(false);
-        setMode(newMode);
-        setTime(times[newMode]);
-        setActiveCourseId(courseId);
-    }, [times]);
 
 
     const toggleTimer = (courseId: string) => {
