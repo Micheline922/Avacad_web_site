@@ -17,7 +17,7 @@ const courses: Course[] = [
     id: 'cs101',
     title: "Introduction à l'informatique",
     description: "Fondamentaux de la programmation et des concepts informatiques.",
-    progress: 75,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: 'Chapitre 1 : Fondamentaux de la programmation', content: "Ce chapitre introduit les concepts de base de la programmation. Les variables sont comme des boîtes étiquetées pour stocker des informations (par exemple, `age = 25`). Chaque information a un type : entier (`int`), texte (`string`), ou vrai/faux (`booléen`). Les opérateurs nous permettent d'effectuer des calculs (`+`, `-`, `*`, `/`) ou des comparaisons (`==`, `!=`, `>`, `<`). Nous utilisons Python pour sa syntaxe simple, idéale pour les débutants." },
@@ -35,7 +35,7 @@ const courses: Course[] = [
     id: 'ds202',
     title: 'Structures de données et algorithmes',
     description: "Étude approfondie des structures de données et des techniques algorithmiques.",
-    progress: 50,
+    progress: 0,
     totalStudyTime: 0,
      notes: [
         { title: 'Chapitre 1 : Introduction à la complexité algorithmique', content: "La notation 'Big O' est un outil essentiel pour mesurer l'efficacité d'un algorithme. Elle décrit comment le temps d'exécution ou l'espace mémoire requis par un algorithme augmente à mesure que la taille des données d'entrée augmente. Un algorithme en O(n) est linéaire, tandis qu'un algorithme en O(log n) est beaucoup plus rapide pour de grands volumes de données." },
@@ -53,7 +53,7 @@ const courses: Course[] = [
     id: 'db303',
     title: 'Systèmes de bases de données',
     description: "Apprenez les bases de données relationnelles, SQL et la conception de bases de données.",
-    progress: 25,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: 'Chapitre 1 : Le modèle relationnel', content: "Le modèle relationnel, popularisé par SQL, structure les données dans des tables. Chaque table est une collection de lignes (enregistrements) et de colonnes (attributs). Les clés (primaires, étrangères) créent des liens entre les tables et garantissent l'intégrité et la cohérence des données, évitant ainsi les anomalies." },
@@ -70,7 +70,7 @@ const courses: Course[] = [
     id: 'os404',
     title: "Systèmes d'exploitation",
     description: "Concepts de base des systèmes d'exploitation, y compris les processus, la gestion de la mémoire et les systèmes de fichiers.",
-    progress: 90,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: 'Chapitre 1 : Gestion des processus', content: "Un processus est une instance d'un programme en cours d'exécution. Le système d'exploitation (SE) est responsable de l'allocation des ressources (CPU, mémoire) à chaque processus, de leur création à leur destruction. Il gère également la communication inter-processus, leur permettant de collaborer en toute sécurité." },
@@ -87,7 +87,7 @@ const courses: Course[] = [
     id: 'elec101',
     title: "Électricité : Principes et applications",
     description: "Explorez les lois fondamentales de l'électricité et leurs applications pratiques.",
-    progress: 60,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Lois fondamentales de l'électricité", content: "La loi d'Ohm (V=IR) est la pierre angulaire de l'analyse des circuits. Elle stipule que la tension (V) est égale au courant (I) multiplié par la résistance (R). Les lois de Kirchhoff sont également essentielles : la loi des nœuds (la somme des courants entrant dans un nœud est nulle) et la loi des mailles (la somme des tensions dans une boucle est nulle) permettent de résoudre des circuits plus complexes." },
@@ -104,7 +104,7 @@ const courses: Course[] = [
     id: 'elecnum201',
     title: "Électronique numérique",
     description: "Les bases des circuits logiques, des microprocesseurs et de la conception de systèmes numériques.",
-    progress: 10,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Portes logiques et algèbre de Boole", content: "L'électronique numérique repose sur l'algèbre de Boole et les portes logiques (ET, OU, NON, NON-ET, etc.). Ces composants de base permettent de construire des circuits qui prennent des décisions binaires. L'algèbre de Boole fournit les outils mathématiques pour analyser et simplifier ces circuits." },
@@ -121,7 +121,7 @@ const courses: Course[] = [
     id: 'droit201',
     title: "Droit civil et législation sociale",
     description: "Introduction aux concepts du droit civil et de la législation sociale.",
-    progress: 40,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Introduction au droit civil", content: "Le droit civil régit les rapports entre les personnes privées (physiques ou morales). Il définit ce qu'est une personne juridique, ses droits fondamentaux (droit à la vie privée, à la propriété) et ses obligations. Les sources du droit incluent la loi votée par le parlement, la jurisprudence (décisions des tribunaux) et la doctrine (analyses des juristes)." },
@@ -138,7 +138,7 @@ const courses: Course[] = [
     id: 'eco101',
     title: "Principes de l'économie générale",
     description: "Comprendre les théories et les mécanismes de base de l'économie.",
-    progress: 80,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Offre et demande", content: "Le modèle de l'offre et de la demande est le concept central de l'économie de marché. La courbe de demande montre la quantité d'un bien que les consommateurs sont prêts à acheter à différents prix. La courbe d'offre montre la quantité que les producteurs sont prêts à vendre. Le point où ces deux courbes se croisent détermine le prix et la quantité d'équilibre du marché." },
@@ -155,7 +155,7 @@ const courses: Course[] = [
     id: 'webdev301',
     title: "Programmation Web",
     description: "Créez des sites web dynamiques avec HTML5, CSS3 et JavaScript.",
-    progress: 70,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : HTML5 - La structure des pages web", content: "HTML est le langage de balisage qui définit la structure sémantique d'une page web. Les balises comme `<header>`, `<main>`, `<article>` et `<footer>` ne servent pas qu'à la mise en page ; elles donnent un sens au contenu pour les navigateurs et les lecteurs d'écran, ce qui est crucial pour l'accessibilité et le référencement (SEO)." },
@@ -172,7 +172,7 @@ const courses: Course[] = [
     id: 'archi401',
     title: "Architecture de l'ordinateur",
     description: "Étude de la conception et de l'organisation des systèmes informatiques.",
-    progress: 30,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Organisation et conception des systèmes informatiques", content: "Ce chapitre explore l'architecture de Von Neumann, le modèle fondamental de la plupart des ordinateurs modernes. Il se compose de quatre parties principales : l'unité centrale de traitement (CPU), la mémoire principale (RAM), les dispositifs d'entrée/sortie (clavier, écran) et le bus qui les relie. Nous étudions comment ces composants interagissent pour exécuter des instructions." },
@@ -189,7 +189,7 @@ const courses: Course[] = [
     id: 'fr101',
     title: "Français : Communication professionnelle",
     description: "Maîtrisez la communication écrite et orale dans un contexte professionnel.",
-    progress: 15,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Les bases de la communication écrite", content: "Ce chapitre couvre les fondamentaux de l'écriture professionnelle : clarté, concision, et ton adapté. Nous reverrons les règles de grammaire essentielles, la syntaxe et la ponctuation pour garantir des écrits sans erreurs. L'accent sera mis sur la rédaction d'e-mails professionnels efficaces." },
@@ -205,7 +205,7 @@ const courses: Course[] = [
     id: 'en202',
     title: "Anglais pour l'informatique",
     description: "Améliorez votre anglais technique pour la documentation et la communication.",
-    progress: 45,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapter 1: Technical Vocabulary", content: "This chapter focuses on building a strong vocabulary for the IT field. We will cover key terms related to hardware, software, networking, cybersecurity, and software development. The goal is to understand and use technical terms accurately in context." },
@@ -221,7 +221,7 @@ const courses: Course[] = [
     id: 'math303',
     title: "Mathématiques pour l'ingénieur informaticien",
     description: "Algèbre linéaire, probabilités et logique pour l'informatique.",
-    progress: 20,
+    progress: 0,
     totalStudyTime: 0,
     notes: [
         { title: "Chapitre 1 : Algèbre linéaire", content: "L'algèbre linéaire est fondamentale pour l'informatique graphique, l'apprentissage automatique et bien plus encore. Ce chapitre couvre les vecteurs, les matrices, les opérations matricielles (addition, multiplication), les déterminants, et la résolution de systèmes d'équations linéaires." },
