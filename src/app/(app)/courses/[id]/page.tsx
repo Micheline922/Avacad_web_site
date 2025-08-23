@@ -30,12 +30,8 @@ const DueDateBadge = ({ dueDate }: { dueDate: string }) => {
     const date = new Date(dueDate);
     const now = new Date();
     const daysUntil = differenceInDays(date, now);
-    const isOverdue = isPast(date) && daysUntil < 0;
-
-    if (isOverdue) {
-        return <Badge variant="destructive">En retard</Badge>
-    }
-    if (daysUntil <= 3) {
+    
+    if (!isPast(date) && daysUntil <= 3) {
         return <Badge variant="destructive" className="bg-amber-500 hover:bg-amber-600 text-white">À rendre dans {daysUntil+1} jour(s)</Badge>
     }
     return <Badge variant="secondary">À rendre le {format(date, 'd MMM', { locale: fr })}</Badge>
