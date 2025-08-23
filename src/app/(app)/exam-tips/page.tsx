@@ -6,14 +6,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { generateExamTips } from '@/ai/flows/exam-tips-generator';
-import { Loader2, GraduationCap, Sparkles, AlertCircle, Lightbulb, BookCheck } from 'lucide-react';
+import { generateExamTips, GenerateExamTipsOutput } from '@/ai/flows/exam-tips-generator';
+import { Loader2, GraduationCap, Sparkles, AlertCircle, Lightbulb, BookCheck, BookMarked } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 export default function ExamTipsPage() {
     const [topic, setTopic] = useState('');
-    const [tips, setTips] = useState<string[]>([]);
-    const [resources, setResources] = useState<string[]>([]);
+    const [result, setResult] = useState<GenerateExamTipsOutput | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const { toast } = useToast();
 
@@ -29,12 +28,10 @@ export default function ExamTipsPage() {
         }
 
         setIsLoading(true);
-        setTips([]);
-        setResources([]);
+        setResult(null);
         try {
-            const result = await generateExamTips({ topic });
-            setTips(result.tips);
-            setResources(result.additionalResources);
+            const response = await generateExamTips({ topic });
+            setResult(response);
         } catch (error) {
             console.error("Failed to generate tips:", error);
             toast({
@@ -82,7 +79,7 @@ export default function ExamTipsPage() {
                          </div>
                     )}
 
-                    {!isLoading && tips.length === 0 && (
+                    {!isLoading && !result && (
                         <Alert>
                             <AlertCircle className="h-4 w-4" />
                             <AlertTitle className="font-headline">Prêt à réviser ?</AlertTitle>
@@ -92,35 +89,60 @@ export default function ExamTipsPage() {
                         </Alert>
                     )}
 
-                    {!isLoading && (tips.length > 0 || resources.length > 0) && (
+                    {!isLoading && result && (
                          <div className="space-y-6">
-                            <Card className="bg-background">
-                                <CardHeader>
-                                    <CardTitle className="font-headline text-2xl text-primary flex items-center gap-2"><Lightbulb />Conseils de révision pour "{topic}"</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <ul className="space-y-3 list-disc pl-5 text-muted-foreground">
-                                        {tips.map((tip, index) => (
-                                            <li key={index}>{tip}</li>
+                            {result.tips.length > 0 && (
+                                <Card className="bg-background">
+                                    <CardHeader>
+                                        <CardTitle className="font-headline text-2xl text-primary flex items-center gap-2"><Lightbulb />Conseils de révision pour "{topic}"</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <ul className="space-y-3 list-disc pl-5 text-muted-foreground">
+                                            {result.tips.map((tip, index) => (
+                                                <li key={index}>{tip}</li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            )}
+
+                             {result.suggestedBooks && result.suggestedBooks.length > 0 && (
+                                <Card className="bg-background">
+                                    <CardHeader>
+                                        <CardTitle className="font-headline text-2xl text-primary flex items-center gap-2"><BookMarked />Livres recommandés</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="grid gap-4 md:grid-cols-2">
+                                        {result.suggestedBooks.map((book, index) => (
+                                            <Card key={index} className="flex flex-col">
+                                                <CardHeader>
+                                                    <CardTitle className="font-headline text-lg">{book.title}</CardTitle>
+                                                    <CardDescription>par {book.author}</CardDescription>
+                                                </CardHeader>
+                                                <CardContent className="flex-grow">
+                                                    <p className="text-sm text-muted-foreground">{book.summary}</p>
+                                                </CardContent>
+                                            </Card>
                                         ))}
-                                    </ul>
-                                </CardContent>
-                            </Card>
-                             <Card className="bg-background">
-                                <CardHeader>
-                                    <CardTitle className="font-headline text-2xl text-primary flex items-center gap-2"><BookCheck />Ressources supplémentaires</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                     <ul className="space-y-3 list-disc pl-5 text-muted-foreground">
-                                        {resources.map((resource, index) => (
-                                            <li key={index}>{resource}</li>
-                                        ))}
-                                    </ul>
-                                </CardContent>
-                            </Card>
+                                    </CardContent>
+                                </Card>
+                            )}
+
+                             {result.additionalResources.length > 0 && (
+                                <Card className="bg-background">
+                                    <CardHeader>
+                                        <CardTitle className="font-headline text-2xl text-primary flex items-center gap-2"><BookCheck />Ressources supplémentaires</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                         <ul className="space-y-3 list-disc pl-5 text-muted-foreground">
+                                            {result.additionalResources.map((resource, index) => (
+                                                <li key={index}>{resource}</li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                             )}
                          </div>
                     )}
-
                 </CardContent>
             </Card>
         </div>

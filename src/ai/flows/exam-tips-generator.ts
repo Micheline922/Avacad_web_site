@@ -18,6 +18,11 @@ export type GenerateExamTipsInput = z.infer<typeof GenerateExamTipsInputSchema>;
 const GenerateExamTipsOutputSchema = z.object({
   tips: z.array(z.string()).describe('A list of actionable exam tips.'),
   additionalResources: z.array(z.string()).describe('A list of suggested additional resources.'),
+  suggestedBooks: z.array(z.object({
+    title: z.string().describe("The title of the book."),
+    author: z.string().describe("The author of the book."),
+    summary: z.string().describe("A brief summary of why the book is recommended for the topic.")
+  })).describe("A list of recommended books to read for the course.")
 });
 export type GenerateExamTipsOutput = z.infer<typeof GenerateExamTipsOutputSchema>;
 
@@ -34,6 +39,8 @@ const prompt = ai.definePrompt({
 Générez une liste de conseils d'étude spécifiques et exploitables. Incluez des stratégies pour comprendre les concepts clés, des techniques de mémorisation, des approches de résolution de problèmes et des conseils pour le jour de l'examen.
 
 En plus des conseils, suggérez une liste de ressources supplémentaires, telles que des tutoriels en ligne, des sites web de pratique ou des chaînes YouTube pertinentes qui pourraient aider l'étudiant à se préparer.
+
+Enfin, proposez une liste de 3 à 5 livres de référence sur le sujet. Pour chaque livre, fournissez le titre, l'auteur et un court résumé expliquant pourquoi il est pertinent pour le sujet de l'examen.
 
 Répondez en français.`,
 });
