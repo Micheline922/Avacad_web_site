@@ -53,6 +53,18 @@ const motivationalQuotes = [
   {
     quote: "N'attendez pas. Le temps ne sera jamais 'juste'. Commencez là où vous êtes, et travaillez avec les outils que vous avez à votre disposition.",
     author: "Napoleon Hill"
+  },
+  {
+    quote: "L'expert en toute chose a d'abord été un débutant.",
+    author: "Helen Hayes"
+  },
+  {
+    quote: "La beauté de l'apprentissage, c'est que personne ne peut vous l'enlever.",
+    author: "B.B. King"
+  },
+  {
+    quote: "Un investissement dans le savoir rapporte les meilleurs intérêts.",
+    author: "Benjamin Franklin"
   }
 ];
 
