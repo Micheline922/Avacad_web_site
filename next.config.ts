@@ -18,8 +18,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // Exclure 'fs' du bundle côté client
+    if (!isServer) {
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+        };
+    }
+    
     config.resolve.alias.canvas = false;
+    
     return config;
   },
 };
