@@ -13,7 +13,7 @@ import { fr } from 'date-fns/locale';
 import ConclusionGenerator from '@/components/courses/conclusion-generator';
 import AiTutor from '@/components/courses/ai-tutor';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import PomodoroTimer from '@/components/pomodoro/pomodoro-timer';
+import Chronometre from '@/components/chronometre';
 import { Timer } from 'lucide-react';
 import { getCourseById, Course, Chapter, Assignment } from '@/lib/courses';
 import { useCourseContext } from '@/context/course-context';
@@ -70,7 +70,7 @@ export default function CourseDetailPage() {
             <TabsTrigger value="assignments">Devoirs</TabsTrigger>
             <TabsTrigger value="tutor">Tuteur IA</TabsTrigger>
             <TabsTrigger value="conclusion">Conclusion IA</TabsTrigger>
-            <TabsTrigger value="pomodoro">Pomodoro</TabsTrigger>
+            <TabsTrigger value="chronometre">Chronomètre</TabsTrigger>
           </TabsList>
           
           <TabsContent value="notes" className="mt-4">
@@ -133,7 +133,7 @@ export default function CourseDetailPage() {
              <ConclusionGenerator courseName={course.title} initialContent={fullCourseContentForAI} />
           </TabsContent>
 
-          <TabsContent value="pomodoro" className="mt-4">
+          <TabsContent value="chronometre" className="mt-4">
             <Card>
                 <CardHeader>
                     <div className="flex items-center gap-4">
@@ -141,13 +141,13 @@ export default function CourseDetailPage() {
                             <Timer className="h-8 w-8" />
                         </div>
                         <div>
-                            <CardTitle className="font-headline text-3xl">Horloge Pomodoro</CardTitle>
-                            <CardDescription>Boostez votre productivité avec la technique Pomodoro pour ce cours.</CardDescription>
+                            <CardTitle className="font-headline text-3xl">Chronomètre</CardTitle>
+                            <CardDescription>Boostez votre productivité avec le chronomètre pour ce cours.</CardDescription>
                         </div>
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <PomodoroTimer courseId={course.id} />
+                    <Chronometre courseId={course.id} />
                 </CardContent>
             </Card>
           </TabsContent>

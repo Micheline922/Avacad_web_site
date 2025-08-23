@@ -3,7 +3,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getCourses, Course } from '@/lib/courses';
-import { usePomodoro } from './pomodoro-context';
+import { useChronometre } from './chronometre-context';
 
 interface CourseContextType {
   courses: Course[];
