@@ -220,8 +220,9 @@ export default function LandingPage() {
       </main>
 
       <footer className="py-6 border-t">
-        <div className="container text-center text-muted-foreground">
+        <div className="container text-center text-muted-foreground space-y-1">
           <p>&copy; {new Date().getFullYear()} Avacad. Tous droits réservés.</p>
+          <p>Créé avec ❤️ par Micheline</p>
         </div>
       </footer>
     </div>
