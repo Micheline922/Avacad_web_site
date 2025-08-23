@@ -2,7 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { getCourses, Course } from '@/lib/courses';
+import { getCourses, Course, Assignment } from '@/lib/courses';
 import { useChronometre } from './chronometre-context';
 
 interface CourseContextType {
@@ -10,6 +10,7 @@ interface CourseContextType {
   updateAssignmentCompletion: (courseId: string, assignmentId: string, completed: boolean) => void;
   updateCourseProgress: (courseId: string, newProgress: number) => void;
   addStudyTime: (courseId: string, seconds: number) => void;
+  updateAssignmentDetails: (courseId: string, assignmentId: string, newDetails: Partial<Omit<Assignment, 'id' | 'completed'>>) => void;
 }
 
 const CourseContext = createContext<CourseContextType | undefined>(undefined);
@@ -51,6 +52,23 @@ export function CourseProvider({ children }: { children: ReactNode }) {
         const updatedAssignments = course.assignments.map(assignment => {
           if (assignment.id === assignmentId) {
             return { ...assignment, completed };
+          }
+          return assignment;
+        });
+        return { ...course, assignments: updatedAssignments };
+      }
+      return course;
+    });
+    setCourses(updatedCourses);
+    saveCoursesToLocalStorage(updatedCourses);
+  };
+  
+   const updateAssignmentDetails = (courseId: string, assignmentId: string, newDetails: Partial<Omit<Assignment, 'id' | 'completed'>>) => {
+    const updatedCourses = courses.map(course => {
+      if (course.id === courseId) {
+        const updatedAssignments = course.assignments.map(assignment => {
+          if (assignment.id === assignmentId) {
+            return { ...assignment, ...newDetails };
           }
           return assignment;
         });
@@ -112,7 +130,7 @@ export function CourseProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <CourseContext.Provider value={{ courses, updateAssignmentCompletion, updateCourseProgress, addStudyTime }}>
+    <CourseContext.Provider value={{ courses, updateAssignmentCompletion, updateCourseProgress, addStudyTime, updateAssignmentDetails }}>
       {children}
     </CourseContext.Provider>
   );

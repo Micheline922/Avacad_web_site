@@ -14,9 +14,17 @@ import ConclusionGenerator from '@/components/courses/conclusion-generator';
 import AiTutor from '@/components/courses/ai-tutor';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Chronometre from '@/components/chronometre';
-import { Timer } from 'lucide-react';
+import { Timer, Edit } from 'lucide-react';
 import { getCourseById, Course, Chapter, Assignment } from '@/lib/courses';
 import { useCourseContext } from '@/context/course-context';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import { Calendar as CalendarIcon } from 'lucide-react';
 
 const DueDateBadge = ({ dueDate }: { dueDate: string }) => {
     const date = new Date(dueDate);
@@ -32,6 +40,88 @@ const DueDateBadge = ({ dueDate }: { dueDate: string }) => {
     }
     return <Badge variant="secondary">À rendre le {format(date, 'd MMM', { locale: fr })}</Badge>
 }
+
+
+const EditAssignmentDialog = ({ assignment, courseId }: { assignment: Assignment; courseId: string }) => {
+    const { updateAssignmentDetails } = useCourseContext();
+    const [isOpen, setIsOpen] = useState(false);
+    const [title, setTitle] = useState(assignment.title);
+    const [dueDate, setDueDate] = useState<Date | undefined>(new Date(assignment.dueDate));
+
+    const handleSave = () => {
+        if (title && dueDate) {
+            updateAssignmentDetails(courseId, assignment.id, {
+                title,
+                dueDate: dueDate.toISOString(),
+            });
+            setIsOpen(false);
+        }
+    };
+
+    return (
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+                <Button variant="ghost" size="icon">
+                    <Edit className="h-4 w-4" />
+                </Button>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Modifier le devoir</DialogTitle>
+                    <DialogDescription>
+                        Mettez à jour les détails de votre devoir.
+                    </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="title" className="text-right">
+                            Titre
+                        </Label>
+                        <Input
+                            id="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="col-span-3"
+                        />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="dueDate" className="text-right">
+                            Échéance
+                        </Label>
+                        <Popover>
+                            <PopoverTrigger asChild>
+                                <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                        "w-[280px] justify-start text-left font-normal",
+                                        !dueDate && "text-muted-foreground"
+                                    )}
+                                >
+                                    <CalendarIcon className="mr-2 h-4 w-4" />
+                                    {dueDate ? format(dueDate, 'PPP', { locale: fr }) : <span>Choisissez une date</span>}
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0">
+                                <Calendar
+                                    mode="single"
+                                    selected={dueDate}
+                                    onSelect={setDueDate}
+                                    initialFocus
+                                    locale={fr}
+                                />
+                            </PopoverContent>
+                        </Popover>
+                    </div>
+                </div>
+                <DialogFooter>
+                    <Button variant="secondary" onClick={() => setIsOpen(false)}>Annuler</Button>
+                    <Button onClick={handleSave}>Sauvegarder</Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    );
+};
+
 
 export default function CourseDetailPage() {
   const params = useParams();
@@ -118,7 +208,10 @@ export default function CourseDetailPage() {
                                 {assignment.title}
                             </label>
                         </div>
-                        <DueDateBadge dueDate={assignment.dueDate} />
+                        <div className="flex items-center gap-2">
+                           <DueDateBadge dueDate={assignment.dueDate} />
+                           <EditAssignmentDialog assignment={assignment} courseId={course.id} />
+                        </div>
                     </div>
                     ))}
                 </CardContent>
