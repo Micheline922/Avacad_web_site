@@ -3,14 +3,11 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getCourses, Course, Assignment } from '@/lib/courses';
-import { useChronometre } from './chronometre-context';
 
 interface CourseContextType {
   courses: Course[];
-  updateAssignmentCompletion: (courseId: string, assignmentId: string, completed: boolean) => void;
   updateCourseProgress: (courseId: string, newProgress: number) => void;
   addStudyTime: (courseId: string, seconds: number) => void;
-  updateAssignmentDetails: (courseId: string, assignmentId: string, newDetails: Partial<Omit<Assignment, 'id' | 'completed'>>) => void;
 }
 
 const CourseContext = createContext<CourseContextType | undefined>(undefined);
@@ -44,40 +41,6 @@ export function CourseProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error("Could not access localStorage:", error);
     }
-  };
-
-  const updateAssignmentCompletion = (courseId: string, assignmentId: string, completed: boolean) => {
-    const updatedCourses = courses.map(course => {
-      if (course.id === courseId) {
-        const updatedAssignments = course.assignments.map(assignment => {
-          if (assignment.id === assignmentId) {
-            return { ...assignment, completed };
-          }
-          return assignment;
-        });
-        return { ...course, assignments: updatedAssignments };
-      }
-      return course;
-    });
-    setCourses(updatedCourses);
-    saveCoursesToLocalStorage(updatedCourses);
-  };
-  
-   const updateAssignmentDetails = (courseId: string, assignmentId: string, newDetails: Partial<Omit<Assignment, 'id' | 'completed'>>) => {
-    const updatedCourses = courses.map(course => {
-      if (course.id === courseId) {
-        const updatedAssignments = course.assignments.map(assignment => {
-          if (assignment.id === assignmentId) {
-            return { ...assignment, ...newDetails };
-          }
-          return assignment;
-        });
-        return { ...course, assignments: updatedAssignments };
-      }
-      return course;
-    });
-    setCourses(updatedCourses);
-    saveCoursesToLocalStorage(updatedCourses);
   };
 
   const updateCourseProgress = (courseId: string, newProgress: number) => {
@@ -130,7 +93,7 @@ export function CourseProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <CourseContext.Provider value={{ courses, updateAssignmentCompletion, updateCourseProgress, addStudyTime, updateAssignmentDetails }}>
+    <CourseContext.Provider value={{ courses, updateCourseProgress, addStudyTime }}>
       {children}
     </CourseContext.Provider>
   );
