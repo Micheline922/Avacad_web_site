@@ -32,14 +32,17 @@ export default function QuizComponent({ courseId, courseName, courseContent }: Q
     const getCacheKey = (cId: string) => `quizData_${cId}`;
     const getCacheDateKey = (cId: string) => `quizDate_${cId}`;
 
-    const getDailyCacheBuster = () => {
+    const getDailyCacheBuster = (forceNew = false) => {
+        if (forceNew) {
+            return new Date().toISOString() + Math.random();
+        }
         const date = new Date();
         // Change every 2 days
         const dayOfYear = Math.floor((date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24);
         return `${date.getFullYear()}-${Math.floor(dayOfYear / 2)}`;
     };
 
-    const fetchQuiz = useCallback(async () => {
+    const fetchQuiz = useCallback(async (forceNew = false) => {
         setIsLoading(true);
         try {
             const cacheKey = getCacheKey(courseId);
@@ -47,15 +50,15 @@ export default function QuizComponent({ courseId, courseName, courseContent }: Q
             
             const cachedData = localStorage.getItem(cacheKey);
             const cachedDate = localStorage.getItem(cacheDateKey);
-            const cacheBuster = getDailyCacheBuster();
+            const cacheBuster = getDailyCacheBuster(forceNew);
 
-            if (cachedData && cachedDate === cacheBuster) {
+            if (cachedData && cachedDate === getDailyCacheBuster() && !forceNew) {
                 setQuizData(JSON.parse(cachedData));
             } else {
                 const response = await generateQuiz({ courseName, courseContent, cacheBuster });
                 setQuizData(response);
                 localStorage.setItem(cacheKey, JSON.stringify(response));
-                localStorage.setItem(cacheDateKey, cacheBuster);
+                localStorage.setItem(cacheDateKey, getDailyCacheBuster());
             }
         } catch (error) {
             console.error("Failed to generate quiz:", error);
@@ -102,11 +105,9 @@ export default function QuizComponent({ courseId, courseName, courseContent }: Q
     };
     
     const forceNewQuiz = () => {
-        localStorage.removeItem(getCacheKey(courseId));
-        localStorage.removeItem(getCacheDateKey(courseId));
         restartQuiz();
         setQuizData(null);
-        fetchQuiz();
+        fetchQuiz(true);
     };
 
     if (isLoading) {
@@ -193,8 +194,8 @@ export default function QuizComponent({ courseId, courseName, courseContent }: Q
                                 variant="outline"
                                 className={cn(
                                     "w-full justify-start h-auto py-3 text-left whitespace-normal",
-                                    isAnswered && isCorrect && "bg-green-100 border-green-500 text-green-800 hover:bg-green-200",
-                                    isAnswered && isSelected && !isCorrect && "bg-red-100 border-red-500 text-red-800 hover:bg-red-200"
+                                    isAnswered && isCorrect && "bg-green-100 border-green-500 text-green-800 hover:bg-green-200 dark:bg-green-900/50 dark:border-green-700 dark:text-green-300 dark:hover:bg-green-900/60",
+                                    isAnswered && isSelected && !isCorrect && "bg-red-100 border-red-500 text-red-800 hover:bg-red-200 dark:bg-red-900/50 dark:border-red-700 dark:text-red-300 dark:hover:bg-red-900/60"
                                 )}
                                 onClick={() => handleAnswerSelect(option)}
                                 disabled={isAnswered}
@@ -208,12 +209,10 @@ export default function QuizComponent({ courseId, courseName, courseContent }: Q
                 </div>
 
                 {isAnswered && (
-                     <Alert variant={selectedAnswer === currentQuestion.correctAnswer ? "default" : "destructive"} className={cn(selectedAnswer === currentQuestion.correctAnswer ? "border-green-300 bg-green-50" : "")}>
+                     <Alert variant={selectedAnswer === currentQuestion.correctAnswer ? "default" : "destructive"} className={cn(selectedAnswer === currentQuestion.correctAnswer ? "border-green-300 bg-green-50 dark:bg-green-900/30 dark:border-green-700" : "dark:bg-red-900/30 dark:border-red-700")}>
                          {selectedAnswer === currentQuestion.correctAnswer ? <CheckCircle className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
                         <AlertTitle className="font-headline">{selectedAnswer === currentQuestion.correctAnswer ? "Bonne réponse !" : "Mauvaise réponse"}</AlertTitle>
-                        <AlertDescription>
-                            {selectedAnswer !== currentQuestion.correctAnswer && `La bonne réponse était : ${currentQuestion.correctAnswer}`}
-                        </AlertDescription>
+                        {selectedAnswer !== currentQuestion.correctAnswer && <AlertDescription>La bonne réponse était : {currentQuestion.correctAnswer}</AlertDescription>}
                      </Alert>
                 )}
 
