@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { analyzeDocument, answerDocumentQuestion } from '@/ai/flows/document-analyzer';
-import { Loader2, Sparkles, FileText, Upload, BrainCircuit, MessageSquare, Send } from 'lucide-react';
+import { Loader2, Sparkles, FileText, Upload, BrainCircuit, MessageSquare, Send, AlertCircle } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import pdfParse from 'pdf-parse';
 
