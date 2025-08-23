@@ -22,7 +22,6 @@ import {
   LogOut,
   GraduationCap,
   Calculator,
-  FileText,
   Home
 } from 'lucide-react';
 import Header from './header';
@@ -35,7 +34,6 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     { href: '/', label: 'Accueil', icon: Home },
     { href: '/dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
     { href: '/courses', label: 'Cours', icon: BookOpen },
-    { href: '/document-analyzer', label: 'Analyse de Document', icon: FileText },
     { href: '/exam-tips', label: "Conseils d'examen", icon: GraduationCap },
     { href: '/faq', label: 'FAQ IA', icon: HelpCircle },
     { href: '/calculator', label: 'Calculatrice', icon: Calculator },

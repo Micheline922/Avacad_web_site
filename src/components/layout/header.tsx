@@ -8,7 +8,6 @@ const getTitleFromPathname = (pathname: string) => {
   if (pathname === '/') return 'Accueil';
   if (pathname.includes('/dashboard')) return 'Tableau de bord';
   if (pathname.includes('/courses')) return 'Mes Cours';
-  if (pathname.includes('/document-analyzer')) return 'Analyse de Document';
   if (pathname.includes('/faq')) return 'FAQ IA';
   if (pathname.includes('/exam-tips')) return "Conseils d'examen";
   if (pathname.includes('/calculator')) return 'Calculatrice';
