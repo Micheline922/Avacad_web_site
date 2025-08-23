@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -221,7 +222,7 @@ export default function LandingPage() {
       <footer className="py-6 border-t">
         <div className="container text-center text-muted-foreground space-y-1">
           <p>&copy; {new Date().getFullYear()} Avacad. Tous droits réservés.</p>
-          <p>Conçu par Micheline</p>
+          <p>par Micheline Ntale</p>
         </div>
       </footer>
     </div>
