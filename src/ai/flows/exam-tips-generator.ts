@@ -40,7 +40,7 @@ Générez une liste de conseils d'étude spécifiques et exploitables. Incluez d
 
 En plus des conseils, suggérez une liste de ressources supplémentaires, telles que des tutoriels en ligne, des sites web de pratique ou des chaînes YouTube pertinentes qui pourraient aider l'étudiant à se préparer.
 
-Enfin, proposez une liste de 3 à 5 livres de référence sur le sujet. Pour chaque livre, fournissez le titre, l'auteur et un court résumé expliquant pourquoi il est pertinent pour le sujet de l'examen.
+Enfin, proposez une liste de 3 à 5 livres de référence sur le sujet. Pour chaque livre, fournissez le titre, l'auteur et un court résumé expliquant pourquoi il est pertinent pour le sujet de l'examen. Incluez des classiques comme "Clean Code" de Robert C. Martin, "Introduction to Algorithms" de CLRS, ou "Structure and Interpretation of Computer Programs" de Abelson et Sussman, si cela est pertinent pour le sujet.
 
 Répondez en français.`,
 });
