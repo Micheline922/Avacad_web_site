@@ -46,7 +46,7 @@ const motivationalQuotes = [
     quote: "Le succès, c'est d'aller d'échec en échec sans perdre son enthousiasme.",
     author: "Winston Churchill"
   },
-  {
+    {
     quote: "Croyez en vous et en tout ce que vous êtes. Sachez qu'il y a quelque chose à l'intérieur de vous qui est plus grand que n'importe quel obstacle.",
     author: "Christian D. Larson"
   },
@@ -353,3 +353,5 @@ const MotivationHub = () => {
 };
 
 export default MotivationHub;
+
+    
