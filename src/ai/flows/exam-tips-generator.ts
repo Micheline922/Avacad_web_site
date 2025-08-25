@@ -40,7 +40,19 @@ Générez une liste de conseils d'étude spécifiques et exploitables. Incluez d
 
 En plus des conseils, suggérez une liste de ressources supplémentaires, telles que des tutoriels en ligne, des sites web de pratique ou des chaînes YouTube pertinentes qui pourraient aider l'étudiant à se préparer.
 
-Enfin, proposez une liste de 3 à 5 livres de référence sur le sujet. Pour chaque livre, fournissez le titre, l'auteur et un court résumé expliquant pourquoi il est pertinent pour le sujet de l'examen. Incluez des classiques comme "Clean Code" de Robert C. Martin, "Introduction to Algorithms" de CLRS, ou "Structure and Interpretation of Computer Programs" de Abelson et Sussman, si cela est pertinent pour le sujet.
+Enfin, proposez une liste de 3 à 5 livres de référence sur le sujet. Pour chaque livre, fournissez le titre, l'auteur et un court résumé expliquant pourquoi il est pertinent pour le sujet de l'examen.
+Incluez des classiques et des ouvrages de référence lorsque cela est pertinent pour le sujet, en choisissant parmi les domaines suivants :
+- Algorithmique : "Introduction to Algorithms" de CLRS.
+- Qualité de code : "Clean Code" de Robert C. Martin.
+- Concepts fondamentaux : "Structure and Interpretation of Computer Programs" de Abelson et Sussman.
+- Génie Logiciel : Des livres sur les patrons de conception (Design Patterns), les méthodologies agiles ou l'architecture logicielle.
+- Réseaux et Télécommunications : Des ouvrages de référence comme "Computer Networking: A Top-Down Approach" de Kurose et Ross.
+- Systèmes d'Information : Des livres sur la modélisation (Merise, UML) ou la gestion de projet SI.
+- Sécurité Informatique : Des références sur la cryptographie, la sécurité des réseaux ou le hacking éthique.
+- Développement Mobile : Des livres sur le développement natif (Swift, Kotlin) ou multiplateforme (React Native, Flutter).
+- Programmation Orientée Objet : Des ouvrages expliquant les concepts de l'OO avec des exemples en Java, C++ ou Python.
+- Intelligence Artificielle : Des classiques comme "Artificial Intelligence: A Modern Approach" de Russell et Norvig.
+- Langages de programmation : Suggérez également, si pertinent, un livre qui explore et compare plusieurs langages de programmation, expliquant leurs forces, leurs faiblesses et leurs domaines d'application.
 
 Répondez en français.`,
 });
