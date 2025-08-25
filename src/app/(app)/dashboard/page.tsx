@@ -264,7 +264,7 @@ const MotivationHub = () => {
                     </Card>
                 </div>
 
-                <div className="lg:col-span-3 grid gap-8 md:grid-cols-1">
+                <div className="lg:col-span-3 grid gap-8 md:grid-cols-2">
                      <Card>
                         <CardHeader>
                              <div className="flex justify-between items-start">
@@ -353,5 +353,3 @@ const MotivationHub = () => {
 };
 
 export default MotivationHub;
-
-    
