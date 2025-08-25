@@ -107,124 +107,125 @@ const LoginForm = () => {
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-            <Link href="/">
-                <Logo />
-            </Link>
-          <nav className="flex items-center gap-4">
-             <Dialog>
+       <Dialog>
+        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container flex h-16 items-center justify-between">
+                <Link href="/">
+                    <Logo />
+                </Link>
+            <nav className="flex items-center gap-4">
                 <DialogTrigger asChild>
                     <Button>
                         Se connecter <LogIn className="ml-2" />
                     </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                    <DialogTitle>Connexion</DialogTitle>
-                    <DialogDescription>
-                        Entrez vos identifiants pour accéder à votre tableau de bord.
-                    </DialogDescription>
-                    </DialogHeader>
-                    <LoginForm />
-                </DialogContent>
-            </Dialog>
-          </nav>
-        </div>
-      </header>
-      
-      <main className="flex-1">
-        <section className="py-20 text-center bg-gradient-to-b from-primary/5 to-transparent">
-            <div className="container">
-                <h1 className="font-headline text-4xl md:text-6xl font-bold text-primary">
-                    Libérez Votre Potentiel Académique
-                </h1>
-                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                    Un outil innovant conçu pour stimuler votre réussite scolaire. Il vous accompagne dans vos révisions, vous aide à organiser vos idées, et simplifie l’accès aux ressources essentielles pour apprendre efficacement.
-                </p>
-                 <Button size="lg" className="mt-8" asChild>
-                    <Link href="/login">
-                        Commencer Maintenant
-                    </Link>
-                </Button>
+            </nav>
             </div>
-        </section>
+        </header>
+        
+        <main className="flex-1">
+            <section className="py-20 text-center bg-gradient-to-b from-primary/5 to-transparent">
+                <div className="container">
+                    <h1 className="font-headline text-4xl md:text-6xl font-bold text-primary">
+                        Libérez Votre Potentiel Académique
+                    </h1>
+                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                        Un outil innovant conçu pour stimuler votre réussite scolaire. Il vous accompagne dans vos révisions, vous aide à organiser vos idées, et simplifie l’accès aux ressources essentielles pour apprendre efficacement.
+                    </p>
+                    <DialogTrigger asChild>
+                        <Button size="lg" className="mt-8">
+                            Commencer Maintenant
+                        </Button>
+                    </DialogTrigger>
+                </div>
+            </section>
 
-        <section id="features" className="py-20">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="font-headline text-3xl font-bold">Fonctionnalités Clés</h2>
-              <p className="text-muted-foreground mt-2">Des outils conçus pour votre réussite.</p>
-            </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {features.map((feature) => (
-                <Card key={feature.title} className="text-center">
-                  <CardHeader>
-                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
-                      <feature.icon className="h-6 w-6" />
-                    </div>
-                    <CardTitle className="font-headline">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="courses-preview" className="py-20 bg-muted/50">
+            <section id="features" className="py-20">
             <div className="container">
                 <div className="text-center mb-12">
-                    <h2 className="font-headline text-3xl font-bold">Découvrez un aperçu de nos cours</h2>
-                    <p className="text-muted-foreground mt-2">Des sujets variés pour élargir vos connaissances.</p>
+                <h2 className="font-headline text-3xl font-bold">Fonctionnalités Clés</h2>
+                <p className="text-muted-foreground mt-2">Des outils conçus pour votre réussite.</p>
                 </div>
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    {featuredCourses.map((course) => (
-                        <Card key={course.title}>
-                            <CardHeader>
-                                <CardTitle className="font-headline text-xl">{course.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription>{course.description}</CardDescription>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
-                <div className="text-center mt-12">
-                    <Button asChild variant="outline">
-                        <Link href="/courses">
-                            Voir tous les cours <ArrowRight className="ml-2" />
-                        </Link>
-                    </Button>
+                {features.map((feature) => (
+                    <Card key={feature.title} className="text-center">
+                    <CardHeader>
+                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+                        <feature.icon className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="font-headline">{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                    </Card>
+                ))}
                 </div>
             </div>
-        </section>
+            </section>
 
-        <section className="py-20">
-           <div className="container max-w-3xl mx-auto">
-             <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg">
-                <CardHeader>
-                    <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Citation du jour</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <blockquote className="text-xl italic">
-                        "La meilleure façon de prédire l'avenir, c'est de l'inventer."
-                    </blockquote>
-                    <p className="text-right mt-2 opacity-80">- Alan Kay</p>
-                </CardContent>
-            </Card>
-           </div>
-        </section>
-      </main>
+            <section id="courses-preview" className="py-20 bg-muted/50">
+                <div className="container">
+                    <div className="text-center mb-12">
+                        <h2 className="font-headline text-3xl font-bold">Découvrez un aperçu de nos cours</h2>
+                        <p className="text-muted-foreground mt-2">Des sujets variés pour élargir vos connaissances.</p>
+                    </div>
+                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                        {featuredCourses.map((course) => (
+                            <Card key={course.title}>
+                                <CardHeader>
+                                    <CardTitle className="font-headline text-xl">{course.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <CardDescription>{course.description}</CardDescription>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                    <div className="text-center mt-12">
+                        <Button asChild variant="outline">
+                            <Link href="/courses">
+                                Voir tous les cours <ArrowRight className="ml-2" />
+                            </Link>
+                        </Button>
+                    </div>
+                </div>
+            </section>
 
-      <footer className="py-6 border-t">
-        <div className="container text-center text-muted-foreground space-y-1">
-          <p>&copy; {new Date().getFullYear()} Avacad. Tous droits réservés.</p>
-          <p>par Micheline Ntale</p>
-        </div>
-      </footer>
+            <section className="py-20">
+            <div className="container max-w-3xl mx-auto">
+                <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg">
+                    <CardHeader>
+                        <CardTitle className="font-headline text-2xl flex items-center gap-2"><Lightbulb />Citation du jour</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <blockquote className="text-xl italic">
+                            "La meilleure façon de prédire l'avenir, c'est de l'inventer."
+                        </blockquote>
+                        <p className="text-right mt-2 opacity-80">- Alan Kay</p>
+                    </CardContent>
+                </Card>
+            </div>
+            </section>
+        </main>
+
+        <footer className="py-6 border-t">
+            <div className="container text-center text-muted-foreground space-y-1">
+            <p>&copy; {new Date().getFullYear()} Avacad. Tous droits réservés.</p>
+            <p>par Micheline Ntale</p>
+            </div>
+        </footer>
+
+        <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+                <DialogTitle>Connexion</DialogTitle>
+                <DialogDescription>
+                    Entrez vos identifiants pour accéder à votre tableau de bord.
+                </DialogDescription>
+            </DialogHeader>
+            <LoginForm />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
