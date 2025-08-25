@@ -263,90 +263,88 @@ const MotivationHub = () => {
                         </CardContent>
                     </Card>
                 </div>
-
-                <div className="lg:col-span-3 grid gap-8 md:grid-cols-2">
-                     <Card>
-                        <CardHeader>
-                             <div className="flex justify-between items-start">
-                                <div>
-                                    <CardTitle className="font-headline flex items-center gap-2"><CheckCircle />Progrès quotidiens</CardTitle>
-                                    <CardDescription>Les petits pas mènent à de grandes réalisations.</CardDescription>
-                                </div>
-                                 <Dialog open={isDailyProgressDialogOpen} onOpenChange={setIsDailyProgressDialogOpen}>
-                                    <DialogTrigger asChild>
-                                        <Button variant="outline" size="sm" onClick={() => openEditDialog('daily')}>
-                                            <Edit className="mr-2 h-4 w-4" />
-                                            Modifier
-                                        </Button>
-                                    </DialogTrigger>
-                                    <DialogContent>
-                                        <DialogHeader>
-                                            <DialogTitle>Modifier les progrès quotidiens</DialogTitle>
-                                            <DialogDescription>
-                                                Mettez à jour vos tâches pour aujourd'hui.
-                                            </DialogDescription>
-                                        </DialogHeader>
-                                        <div className="space-y-4 py-4">
-                                            {tempDailyProgress.map((goal, index) => (
-                                                <Input
-                                                    key={goal.id}
-                                                    value={goal.label}
-                                                    onChange={(e) => handleGoalChange(tempDailyProgress, setTempDailyProgress, index, e.target.value)}
-                                                />
-                                            ))}
-                                        </div>
-                                        <DialogFooter>
-                                            <Button variant="secondary" onClick={() => setIsDailyProgressDialogOpen(false)}>Annuler</Button>
-                                            <Button onClick={() => saveGoals('daily')}>Sauvegarder</Button>
-                                        </DialogFooter>
-                                    </DialogContent>
-                                </Dialog>
+                
+                <Card className="md:col-span-2 lg:col-span-1">
+                    <CardHeader>
+                            <div className="flex justify-between items-start">
+                            <div>
+                                <CardTitle className="font-headline flex items-center gap-2"><CheckCircle />Progrès quotidiens</CardTitle>
+                                <CardDescription>Les petits pas mènent à de grandes réalisations.</CardDescription>
                             </div>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                             {dailyProgress.map((item) => (
-                                <div key={item.id} className="flex items-center space-x-3 p-3 rounded-md bg-background hover:bg-secondary transition-colors">
-                                    <Checkbox 
-                                        id={item.id} 
-                                        checked={item.completed} 
-                                        onCheckedChange={() => handleCompletionChange(dailyProgress, setDailyProgress, item.id)}
-                                    />
-                                    <label
-                                        htmlFor={item.id}
-                                        className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'line-through text-muted-foreground' : ''}`}
-                                    >
-                                        {item.label}
-                                    </label>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
+                                <Dialog open={isDailyProgressDialogOpen} onOpenChange={setIsDailyProgressDialogOpen}>
+                                <DialogTrigger asChild>
+                                    <Button variant="outline" size="sm" onClick={() => openEditDialog('daily')}>
+                                        <Edit className="mr-2 h-4 w-4" />
+                                        Modifier
+                                    </Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Modifier les progrès quotidiens</DialogTitle>
+                                        <DialogDescription>
+                                            Mettez à jour vos tâches pour aujourd'hui.
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="space-y-4 py-4">
+                                        {tempDailyProgress.map((goal, index) => (
+                                            <Input
+                                                key={goal.id}
+                                                value={goal.label}
+                                                onChange={(e) => handleGoalChange(tempDailyProgress, setTempDailyProgress, index, e.target.value)}
+                                            />
+                                        ))}
+                                    </div>
+                                    <DialogFooter>
+                                        <Button variant="secondary" onClick={() => setIsDailyProgressDialogOpen(false)}>Annuler</Button>
+                                        <Button onClick={() => saveGoals('daily')}>Sauvegarder</Button>
+                                    </DialogFooter>
+                                </DialogContent>
+                            </Dialog>
+                        </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                            {dailyProgress.map((item) => (
+                            <div key={item.id} className="flex items-center space-x-3 p-3 rounded-md bg-background hover:bg-secondary transition-colors">
+                                <Checkbox 
+                                    id={item.id} 
+                                    checked={item.completed} 
+                                    onCheckedChange={() => handleCompletionChange(dailyProgress, setDailyProgress, item.id)}
+                                />
+                                <label
+                                    htmlFor={item.id}
+                                    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${item.completed ? 'line-through text-muted-foreground' : ''}`}
+                                >
+                                    {item.label}
+                                </label>
+                            </div>
+                        ))}
+                    </CardContent>
+                </Card>
 
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="font-headline text-2xl flex items-center gap-2"><MessageSquareQuote />Citations pour vous motiver</CardTitle>
-                             <CardDescription>Une dose d'inspiration pour vos sessions d'étude.</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                           <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                    <TableHead>Citation</TableHead>
-                                    <TableHead className="text-right">Auteur</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {motivationalQuotes.map((q, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell className="font-medium italic">"{q.quote}"</TableCell>
-                                        <TableCell className="text-right text-muted-foreground">{q.author}</TableCell>
-                                    </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-                    </Card>
-                </div>
+                <Card className="lg:col-span-2">
+                    <CardHeader>
+                        <CardTitle className="font-headline text-2xl flex items-center gap-2"><MessageSquareQuote />Citations pour vous motiver</CardTitle>
+                            <CardDescription>Une dose d'inspiration pour vos sessions d'étude.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                <TableHead>Citation</TableHead>
+                                <TableHead className="text-right">Auteur</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {motivationalQuotes.map((q, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-medium italic">"{q.quote}"</TableCell>
+                                    <TableCell className="text-right text-muted-foreground">{q.author}</TableCell>
+                                </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </CardContent>
+                </Card>
             </div>
         </>
     );
