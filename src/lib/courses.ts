@@ -49,75 +49,7 @@ const courses: Course[] = [
       { id: '3', title: 'Parcours de graphe (BFS, DFS)', dueDate: '2024-10-05', completed: false },
     ],
   },
-  {
-    id: 'db303',
-    title: 'Systèmes de bases de données',
-    description: "Apprenez les bases de données relationnelles, SQL et la conception de bases de données.",
-    progress: 0,
-    totalStudyTime: 0,
-    notes: [
-        { title: 'Chapitre 1 : Le modèle relationnel', content: "Le modèle relationnel, popularisé par SQL, structure les données dans des tables. Chaque table est une collection de lignes (enregistrements) et de colonnes (attributs). Les clés (primaires, étrangères) créent des liens entre les tables et garantissent l'intégrité et la cohérence des données, évitant ainsi les anomalies." },
-        { title: 'Chapitre 2 : SQL (Structured Query Language)', content: "SQL est le langage universel pour communiquer avec les bases de données relationnelles. `SELECT` est utilisé pour lire les données, `INSERT` pour en ajouter, `UPDATE` pour les modifier et `DELETE` pour les supprimer. Les `JOIN` permettent de combiner des données provenant de plusieurs tables en une seule requête, ce qui est au cœur de la puissance de SQL." },
-        { title: 'Chapitre 3 : Conception de bases de données et normalisation', content: "La normalisation est un processus de conception qui vise à réduire la redondance des données et à améliorer leur intégrité. Les formes normales (1NF, 2NF, 3NF) sont des règles qui guident la structure des tables. Une bonne conception évite les problèmes de mise à jour et assure que les données sont logiquement bien organisées." },
-        { title: 'Chapitre 4 : Transactions et concurrence', content: "Les transactions garantissent que les opérations sur la base de données sont fiables. Les propriétés ACID (Atomicité, Cohérence, Isolation, Durabilité) assurent que soit toutes les opérations d'une transaction réussissent, soit aucune n'est appliquée. Cela empêche la base de données de se retrouver dans un état incohérent, même en cas de pannes ou d'accès multiples simultanés." },
-    ],
-    assignments: [
-      { id: '1', title: 'Diagramme ER pour une université', dueDate: '2024-08-30', completed: true },
-      { id: '2', title: 'Pratique des requêtes SQL', dueDate: '2024-09-15', completed: true },
-    ],
-  },
    {
-    id: 'os404',
-    title: "Systèmes d'exploitation",
-    description: "Concepts de base des systèmes d'exploitation, y compris les processus, la gestion de la mémoire et les systèmes de fichiers.",
-    progress: 0,
-    totalStudyTime: 0,
-    notes: [
-        { title: 'Chapitre 1 : Gestion des processus', content: "Un processus est une instance d'un programme en cours d'exécution. Le système d'exploitation (SE) est responsable de l'allocation des ressources (CPU, mémoire) à chaque processus, de leur création à leur destruction. Il gère également la communication inter-processus, leur permettant de collaborer en toute sécurité." },
-        { title: 'Chapitre 2 : Ordonnancement du CPU', content: "L'ordonnanceur du CPU est le composant du SE qui décide quel processus prêt doit obtenir l'accès au processeur. Des algorithmes comme le 'Round Robin' (tourniquet) donnent à chaque processus une petite tranche de temps, assurant une bonne réactivité du système. D'autres, comme SJF (Shortest Job First), optimisent le débit global." },
-        { title: 'Chapitre 3 : Gestion de la mémoire', content: "La gestion de la mémoire est cruciale pour permettre à plusieurs programmes de s'exécuter en même temps. La mémoire virtuelle est une technique astucieuse où le SE utilise le disque dur pour simuler plus de RAM qu'il n'y en a physiquement. La pagination divise la mémoire en blocs de taille fixe pour simplifier l'allocation et éviter la fragmentation." },
-        { title: 'Chapitre 4 : Systèmes de fichiers et concurrence', content: "Un système de fichiers organise les données sur un support de stockage (disque dur, SSD) sous forme de fichiers et de répertoires. Il gère les permissions d'accès et assure l'intégrité des données. La concurrence est un défi majeur : le SE doit utiliser des mécanismes comme les verrous (mutex) ou les sémaphores pour éviter que plusieurs processus n'interfèrent les uns avec les autres lors de l'accès à des ressources partagées, ce qui pourrait causer des erreurs ou des blocages." },
-    ],
-    assignments: [
-        { id: '1', title: "Simulation d'ordonnanceur de processus", dueDate: '2024-10-01', completed: false },
-        { id: '2', title: "Implémentation d'un gestionnaire de mémoire", dueDate: '2024-10-15', completed: false },
-    ],
-  },
-  {
-    id: 'elec101',
-    title: "Électricité : Principes et applications",
-    description: "Explorez les lois fondamentales de l'électricité et leurs applications pratiques.",
-    progress: 0,
-    totalStudyTime: 0,
-    notes: [
-        { title: "Chapitre 1 : Lois fondamentales de l'électricité", content: "La loi d'Ohm (V=IR) est la pierre angulaire de l'analyse des circuits. Elle stipule que la tension (V) est égale au courant (I) multiplié par la résistance (R). Les lois de Kirchhoff sont également essentielles : la loi des nœuds (la somme des courants entrant dans un nœud est nulle) et la loi des mailles (la somme des tensions dans une boucle est nulle) permettent de résoudre des circuits plus complexes." },
-        { title: "Chapitre 2 : Circuits en série et en parallèle", content: "Dans un circuit en série, les composants sont connectés l'un après l'autre. Le courant est le même à travers tous les composants, et les résistances s'additionnent. Dans un circuit en parallèle, les composants sont sur des branches séparées. La tension est la même aux bornes de chaque branche, et l'inverse de la résistance totale est la somme des inverses de chaque résistance. La plupart des circuits domestiques sont câblés en parallèle." },
-        { title: "Chapitre 3 : Magnétisme et électromagnétisme", content: "Un courant électrique génère un champ magnétique, et un champ magnétique variable induit un courant dans un conducteur (loi de Faraday). Cette interaction est la base des moteurs électriques (qui transforment l'énergie électrique en mouvement), des générateurs (qui font l'inverse) et des transformateurs (qui modifient les niveaux de tension et de courant)." },
-        { title: "Chapitre 4 : Courant alternatif (CA)", content: "Le courant alternatif (CA), où le courant change de direction périodiquement, est utilisé pour transporter l'électricité sur de longues distances car il peut être facilement transformé. L'impédance est l'équivalent de la résistance en CA, mais elle inclut également les effets des condensateurs et des inductances, qui déphasent le courant et la tension et stockent de l'énergie." }
-    ],
-    assignments: [
-      { id: '1', title: "Analyse de circuits simples", dueDate: '2024-09-20', completed: false },
-      { id: '2', title: "Laboratoire sur la loi d'Ohm", dueDate: '2024-10-04', completed: false },
-    ],
-  },
-  {
-    id: 'elecnum201',
-    title: "Électronique numérique",
-    description: "Les bases des circuits logiques, des microprocesseurs et de la conception de systèmes numériques.",
-    progress: 0,
-    totalStudyTime: 0,
-    notes: [
-        { title: "Chapitre 1 : Portes logiques et algèbre de Boole", content: "L'électronique numérique repose sur l'algèbre de Boole et les portes logiques (ET, OU, NON, NON-ET, etc.). Ces composants de base permettent de construire des circuits qui prennent des décisions binaires. L'algèbre de Boole fournit les outils mathématiques pour analyser et simplifier ces circuits." },
-        { title: "Chapitre 2 : Circuits combinatoires", content: "Les circuits combinatoires sont des circuits dont la sortie ne dépend que de l'état actuel des entrées. Ce chapitre couvre la conception de circuits comme les additionneurs, les décodeurs et les multiplexeurs, qui sont les briques de construction de composants plus complexes comme les processeurs." },
-        { title: "Chapitre 3 : Circuits séquentiels", content: "Contrairement aux circuits combinatoires, la sortie des circuits séquentiels dépend des entrées actuelles mais aussi des états précédents. Ce sont des circuits avec de la mémoire. Nous étudierons les bascules (flip-flops), les registres et les compteurs, qui sont essentiels pour stocker des informations et créer des machines à états." },
-        { title: "Chapitre 4 : Introduction aux microprocesseurs", content: "Ce chapitre explore l'architecture de base d'un microprocesseur, y compris l'unité de contrôle, l'ALU et les registres. Nous verrons comment un microprocesseur exécute un cycle d'instructions (fetch-decode-execute) pour exécuter des programmes, et comment il interagit avec la mémoire et les périphériques d'entrée/sortie." }
-    ],
-    assignments: [
-      { id: '1', title: "Simplification de fonctions booléennes", dueDate: '2024-10-20', completed: false },
-      { id: '2', title: "Conception d'un additionneur complet 4 bits", dueDate: '2024-11-04', completed: false },
-    ],
-  },
-  {
     id: 'droit201',
     title: "Droit civil et législation sociale",
     description: "Introduction aux concepts du droit civil et de la législation sociale.",
@@ -135,6 +67,70 @@ const courses: Course[] = [
     ],
   },
   {
+    id: 'droit-penal-101',
+    title: "Introduction au Droit Pénal",
+    description: "Principes fondamentaux du droit pénal, infractions et sanctions.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Principes du Droit Pénal", content: "Ce chapitre aborde les principes de légalité des délits et des peines, la non-rétroactivité de la loi pénale plus sévère, et la présomption d'innocence. Ces principes garantissent les libertés individuelles face au pouvoir de punir de l'État." },
+        { title: "Chapitre 2 : L'infraction", content: "Une infraction est composée de trois éléments : l'élément légal (le texte de loi qui la prévoit), l'élément matériel (l'acte commis) et l'élément moral (l'intention coupable ou la négligence). Nous analyserons la distinction entre crimes, délits et contraventions." },
+        { title: "Chapitre 3 : La responsabilité pénale", content: "Qui peut être tenu pour responsable d'une infraction ? Ce chapitre explore les causes d'irresponsabilité ou d'atténuation de la responsabilité, comme la légitime défense, l'état de nécessité, le trouble mental, ou la contrainte." }
+    ],
+    assignments: [
+        { id: '1', title: "Analyse d'une décision de jurisprudence", dueDate: '2024-10-15', completed: false },
+        { id: '2', title: "Dissertation sur la présomption d'innocence", dueDate: '2024-10-29', completed: false },
+    ],
+  },
+  {
+    id: 'env101',
+    title: "Sciences de l'Environnement",
+    description: "Introduction aux écosystèmes, à la biodiversité et aux défis environnementaux.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Les Écosystèmes", content: "Un écosystème est un ensemble dynamique formé par une communauté d'êtres vivants (biocénose) et leur milieu naturel (biotope). Ce chapitre explore les flux d'énergie et les cycles de la matière (carbone, azote) qui régissent ces systèmes." },
+        { title: "Chapitre 2 : La Biodiversité", content: "La biodiversité désigne la variété des formes de vie sur Terre. Nous étudierons ses différentes échelles (génétique, spécifique, écosystémique) et son importance pour la stabilité des écosystèmes et le bien-être humain. Les causes de l'érosion de la biodiversité seront également analysées." },
+        { title: "Chapitre 3 : Enjeux environnementaux contemporains", content: "Ce chapitre dresse un panorama des grands défis actuels : changement climatique, pollution (air, eau, sols), gestion des déchets et épuisement des ressources naturelles. Des pistes de solutions et les principes du développement durable seront discutés." }
+    ],
+    assignments: [
+        { id: '1', title: "Analyse d'un cycle biogéochimique", dueDate: '2024-10-18', completed: false },
+        { id: '2', title: "Rapport sur une espèce menacée", dueDate: '2024-11-01', completed: false },
+    ],
+  },
+  {
+    id: 'archi101',
+    title: "Histoire de l'Architecture",
+    description: "Panorama des grands courants architecturaux de l'Antiquité à nos jours.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Architecture de l'Antiquité", content: "Ce chapitre explore les ordres architecturaux grecs (dorique, ionique, corinthien) et les innovations romaines comme l'arc en plein cintre, la voûte et le dôme, qui ont permis la construction d'édifices monumentaux tels que le Colisée ou le Panthéon." },
+        { title: "Chapitre 2 : Du Roman au Gothique", content: "L'architecture médiévale se caractérise par l'art roman (murs épais, voûtes en berceau) puis par l'art gothique, avec ses innovations structurelles (croisée d'ogives, arcs-boutants) permettant d'élever des cathédrales baignées de lumière." },
+        { title: "Chapitre 3 : Le Mouvement Moderne", content: "Le 20ème siècle voit une rupture avec la tradition. Le Mouvement Moderne, porté par des architectes comme Le Corbusier ou Mies van der Rohe, prône la fonctionnalité, la rationalité, l'utilisation de nouveaux matériaux (béton armé, acier, verre) et l'abandon de l'ornementation superflue." }
+    ],
+    assignments: [
+        { id: '1', title: "Analyse comparative de deux temples antiques", dueDate: '2024-10-22', completed: false },
+        { id: '2', title: "Dessin schématique d'une cathédrale gothique", dueDate: '2024-11-05', completed: false },
+    ],
+  },
+  {
+    id: 'agro101',
+    title: "Principes d'Agronomie",
+    description: "Introduction à la science des sols, à la culture des plantes et aux systèmes agricoles.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : La Science du Sol", content: "Le sol est un milieu vivant et complexe. Ce chapitre examine sa composition (minéraux, matière organique, eau, air), sa structure et sa texture. La fertilité du sol dépend de ses propriétés physiques, chimiques et biologiques, qui influencent la disponibilité des nutriments pour les plantes." },
+        { title: "Chapitre 2 : Physiologie Végétale", content: "Ce module se concentre sur le fonctionnement des plantes. Nous aborderons la photosynthèse (conversion de l'énergie lumineuse en énergie chimique), la respiration, l'absorption de l'eau et des nutriments par les racines, et le rôle des hormones végétales dans la croissance et le développement." },
+        { title: "Chapitre 3 : Les Systèmes de Culture", content: "Ce chapitre présente les différents systèmes agricoles, de la monoculture intensive à l'agroécologie. Les concepts de rotation des cultures, de gestion intégrée des ravageurs et d'agriculture de conservation sont étudiés comme des moyens de produire durablement en préservant les ressources." }
+    ],
+    assignments: [
+        { id: '1', title: "Analyse d'un profil de sol", dueDate: '2024-10-25', completed: false },
+        { id: '2', title: "Rapport sur les besoins nutritifs d'une culture", dueDate: '2024-11-08', completed: false },
+    ],
+  },
+  {
     id: 'eco101',
     title: "Principes de l'économie générale",
     description: "Comprendre les théories et les mécanismes de base de l'économie.",
@@ -149,6 +145,70 @@ const courses: Course[] = [
     assignments: [
       { id: '1', title: "Analyse de l'offre et de la demande", dueDate: '2024-09-18', completed: true },
       { id: '2', title: "Dissertation sur la politique monétaire", dueDate: '2024-10-02', completed: false },
+    ],
+  },
+   {
+    id: 'eco-macro-201',
+    title: "Macroéconomie Approfondie",
+    description: "Analyse des modèles de croissance, des cycles économiques et des politiques budgétaires.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Le modèle IS-LM", content: "Le modèle IS-LM (Investment-Saving / Liquidity preference-Money supply) est un outil keynésien qui montre comment l'équilibre se forme simultanément sur le marché des biens et services (courbe IS) et sur le marché monétaire (courbe LM). Il permet d'analyser l'impact des politiques budgétaires et monétaires sur le revenu national et le taux d'intérêt." },
+        { title: "Chapitre 2 : Croissance Économique", content: "Ce chapitre explore les théories de la croissance, notamment le modèle de Solow. Il met en évidence le rôle crucial de l'accumulation de capital, de la croissance démographique et, surtout, du progrès technologique comme moteur de l'augmentation du niveau de vie à long terme." },
+        { title: "Chapitre 3 : Les Cycles Économiques", content: "Les économies connaissent des phases d'expansion et de récession. Ce chapitre examine les causes de ces fluctuations, qu'elles proviennent de chocs de demande ou d'offre, et analyse le rôle des politiques de stabilisation (budgétaires et monétaires) pour atténuer l'amplitude de ces cycles." }
+    ],
+    assignments: [
+        { id: '1', title: "Exercice sur le modèle IS-LM", dueDate: '2024-10-21', completed: false },
+        { id: '2', title: "Commentaire sur les sources de la croissance", dueDate: '2024-11-07', completed: false },
+    ],
+  },
+  {
+    id: 'med101',
+    title: "Anatomie et Physiologie Humaine",
+    description: "Introduction à la structure et au fonctionnement du corps humain.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Le Système Nerveux", content: "Le système nerveux est le centre de commande du corps. Il est divisé en système nerveux central (cerveau et moelle épinière) et périphérique. Ce chapitre explore la structure du neurone, la transmission de l'influx nerveux (potentiel d'action) et le fonctionnement des synapses." },
+        { title: "Chapitre 2 : Le Système Cardiovasculaire", content: "Ce module décrit le cœur, les vaisseaux sanguins et le sang. Nous étudierons le cycle cardiaque (systole/diastole), la circulation sanguine (pulmonaire et systémique), et la régulation de la pression artérielle. La composition du sang et le rôle des globules rouges, blancs et plaquettes seront également abordés." },
+        { title: "Chapitre 3 : Le Système Respiratoire", content: "Le système respiratoire assure les échanges gazeux entre l'air et le sang. Ce chapitre couvre l'anatomie des poumons et des voies respiratoires, les mécanismes de la ventilation (inspiration/expiration) et la manière dont l'oxygène et le dioxyde de carbone sont transportés dans le sang et échangés au niveau des alvéoles." }
+    ],
+    assignments: [
+        { id: '1', title: "Schéma d'un arc réflexe", dueDate: '2024-10-30', completed: false },
+        { id: '2', title: "Analyse d'un électrocardiogramme (ECG) simple", dueDate: '2024-11-13', completed: false },
+    ],
+  },
+   {
+    id: 'crim101',
+    title: "Introduction à la Criminologie",
+    description: "Étude du phénomène criminel, de ses causes et des réponses sociales.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Qu'est-ce que la criminologie ?", content: "La criminologie est une science sociale qui étudie le crime en tant que phénomène social. Elle s'intéresse à ses causes (facteurs sociaux, psychologiques), à ses formes, aux criminels, aux victimes, et à la réaction sociale face au crime (système pénal, prévention)." },
+        { title: "Chapitre 2 : Grandes théories criminologiques", content: "Ce chapitre présente les principales écoles de pensée. Des théories sociologiques (école de Chicago, tension structurelle de Merton) qui lient le crime à l'environnement social, aux théories psychologiques qui se concentrent sur les traits de personnalité et les processus mentaux des délinquants." },
+        { title: "Chapitre 3 : La mesure du crime et la victimologie", content: "Comment mesure-t-on la criminalité ? Nous analyserons les statistiques officielles de la police et de la justice, ainsi que les enquêtes de victimation qui permettent de mesurer le 'chiffre noir' du crime (les faits non déclarés). La victimologie, l'étude des victimes, sera également abordée." }
+    ],
+    assignments: [
+        { id: '1', title: "Analyse critique d'une théorie criminologique", dueDate: '2024-11-11', completed: false },
+        { id: '2', title: "Étude sur la peur du crime", dueDate: '2024-11-25', completed: false },
+    ],
+  },
+  {
+    id: 'poly-rdm-101',
+    title: "Résistance des Matériaux (RDM)",
+    description: "Étude du comportement des matériaux solides soumis à des contraintes.",
+    progress: 0,
+    totalStudyTime: 0,
+    notes: [
+        { title: "Chapitre 1 : Contraintes et Déformations", content: "Ce chapitre introduit les concepts fondamentaux de contrainte (force interne par unité de surface) et de déformation (changement de forme relatif). La loi de Hooke établit la relation linéaire entre contrainte et déformation pour les matériaux élastiques, définie par le module de Young." },
+        { title: "Chapitre 2 : Traction et Compression", content: "Analyse des barres soumises à des forces axiales. Nous apprendrons à calculer les contraintes normales, les allongements, et à vérifier la résistance d'une pièce en comparant la contrainte maximale à la limite d'élasticité du matériau pour éviter la déformation permanente." },
+        { title: "Chapitre 3 : Torsion et Flexion", content: "La torsion étudie les pièces soumises à un couple (arbres de transmission). La flexion analyse le comportement des poutres soumises à des charges transversales, ce qui est crucial pour la conception de ponts, de planchers ou de toute structure porteuse. Nous calculerons les contraintes de cisaillement et les contraintes normales de flexion." }
+    ],
+    assignments: [
+        { id: '1', title: "Calcul de la contrainte dans un tirant", dueDate: '2024-11-18', completed: false },
+        { id: '2', title: "Dimensionnement d'une poutre en flexion simple", dueDate: '2024-12-02', completed: false },
     ],
   },
   {
@@ -244,3 +304,5 @@ export const getCourses = (): Course[] => {
 export const getCourseById = (id: string): Course | undefined => {
     return courses.find(course => course.id === id);
 };
+
+    
